@@ -1,0 +1,118 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Amusing</title>
+<link rel="stylesheet"  type="text/css" href="navigationdrop.css" >
+<link rel="stylesheet"  type="text/css" href="collection.css" >
+ </head>
+<body>
+<div class="wrapper">
+   
+  <div class="top"> 
+    
+  </div>
+  
+  <ul class="navigation">
+  <li><a href="navigationdrop.jsp"> SOUNDCLOUD-AMUSE</a></li>
+    <li><a href="###" title="Home"> Home</a></li>
+    <li><a href="collection.jsp" title="Collection"> Collection</a></li>
+    <li><a href="http://localhost:8095/NewFileUpload/index.html" title="Upload"> Upload</a></li>
+
+    <li><a href="###" title="Lyrics"> Lyrics</a>
+     <ul>
+        <li><a href="lyrics.html" title="Upload"> Upload</a></li>
+        <li><a href="lyricreceiver.jsp" title="View"> View</a></li>
+     </ul>
+    <li>
+    <li><a href="###" title="Message">Message</a>
+      <ul>
+        <li><a href="messagesublime.jsp" title="Send">Send</a></li>
+        <li><a href="receive.jsp" title="View">View</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html" title="Logout">Logout</a></li>
+    <form action = "searchresult.jsp" >
+    <li><a><input id="search-bar" name="search" type="text" placeholder="Search to find tracks">
+      <input id="search-button" name="search_submit" type="submit" value="Search"></a></li>
+      </form>
+    <div class="clear"></div>
+  </ul>
+</div>
+<header>
+    <div class="nav">
+      <ul>
+        <li class="overview"><a href="#">Overview</a></li>
+        <li class="Likes"><a href="playlist.jsp">Playlists</a></li>
+        <li class="about"><a href="#">Albums</a></li>
+        <li class="History"><a href="#">History</a></li>
+        <li class="Friends"><a href="#">Friends</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <center><h1>Your favourites!!</h1>
+  <h2>Added Successfully!!</h>
+  <form action = addplaylist.jsp>
+  <%@ page import="java.sql.*"%>
+	<%@ page import="javax.sql.*"%>
+	<%
+	String user = (String)session.getAttribute("userId");
+	String trackname = request.getParameter("trackname");
+		Class.forName("com.mysql.jdbc.Driver");
+		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
+		Statement stmt = con.createStatement();
+		ResultSet res= stmt.executeQuery("select MAX(count) AS count from playlists where usename = '"+user+"';");
+		int c= 0;
+		if(res.next()){
+		c=res.getInt("count");
+		}
+		String query = " insert into playlists (usename, trackname, count) values (?, ?, ?)";
+		PreparedStatement preparedStmt = con.prepareStatement(query);
+		preparedStmt.setString(1, user);
+		preparedStmt.setString(2,trackname );
+		preparedStmt.setInt(3, c+1);
+		
+		preparedStmt.execute();
+		
+		Statement st1 = con.createStatement();
+		ResultSet rs1 = st1.executeQuery("select trackname from playlists where usename = '"+(String)session.getAttribute("userId")+"';");
+		
+			%>
+
+				<%
+					while (rs1.next()) {
+				%>
+				<center><form action = "ind.jsp">
+		<input type = "submit" id="track" name = "track" value = <%=rs1.getString(1)%>>
+		</form></center>
+				<%}
+		
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery("select trackname from usertrack");
+		
+		%>
+		<br><br>
+		Song Name: <select name="trackname">
+
+			<%
+				while (rs.next()) {
+			%>
+			<option><%=rs.getString(1)%></option>
+			<%
+				}
+			%>
+			
+		</select> 
+		
+				
+		<%	
+		con.close();
+		%>
+		<input type = "submit" id="addsong" name = "addsong" value = "Add To Playlist">
+		</form></center>
+
+</body>
+</html>

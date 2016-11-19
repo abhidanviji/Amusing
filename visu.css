@@ -1,0 +1,26 @@
+body{
+  background:#141414;
+}
+
+
+
+  #main {
+    width: 620px;
+    height: 255px;
+    border: 3px solid grey;
+    display: -webkit-flex;
+    -webkit-align-items: flex-start; 
+    
+   
+	padding-bottom: 20px;
+	margin:30px auto;
+
+	-webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
+
+ 
+
