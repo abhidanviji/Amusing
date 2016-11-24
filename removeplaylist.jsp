@@ -54,35 +54,29 @@
   </header>
   
   <center><h1>Your favourites!!</h1>
-  <h2>Added Successfully!!</h>
-  <form action = addplaylist.jsp>
+  <h2>Removed Successfully!!</h>
+  <form action = removeplaylist.jsp>
   <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
 	String user = (String)session.getAttribute("userId");
-	String trackname = request.getParameter("trackname");
+	String trackname = request.getParameter("trackname1");
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
-		Statement stmt = con.createStatement();
-		ResultSet res= stmt.executeQuery("select MAX(count) AS count from playlists where usename = '"+user+"';");
-		int c= 0;
-		if(res.next()){
-		c=res.getInt("count");
-		}
-		String query = " insert into playlists (usename, trackname, count) values (?, ?, ?)";
+		
+		String query = " delete from playlists where trackname = ? and usename = ?";
 		PreparedStatement preparedStmt = con.prepareStatement(query);
-		preparedStmt.setString(1, user);
-		preparedStmt.setString(2,trackname );
-		preparedStmt.setInt(3, c+1);
+		preparedStmt.setString(1, trackname);
+		preparedStmt.setString(2, user);		
 		
 		preparedStmt.execute();
 		
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select trackname from usertrack where trackname not in (select trackname from  playlists);");
+		ResultSet rs = st.executeQuery("select trackname from  playlists where usename = '"+(String)session.getAttribute("userId")+"';");
 		
 		%>
 		<br><br>
-		Song Name: <select name="trackname">
+		Song Name: <select name="trackname1">
 
 			<%
 				while (rs.next()) {
@@ -98,7 +92,7 @@
 		<%	
 		con.close();
 		%>
-		<input type = "submit" id="addsong" name = "addsong" value = "Add To Playlist">
+		<input type = "submit" id="delsong" name = "delsong" value = "Remove from Playlist">
 		</form></center>
 
 </body>

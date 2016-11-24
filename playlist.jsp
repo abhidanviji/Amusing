@@ -76,7 +76,7 @@
 			
 		
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select trackname from usertrack");
+		ResultSet rs = st.executeQuery("select trackname from usertrack where trackname not in (select trackname from  playlists where usename = '"+(String)session.getAttribute("userId")+"')");
 		
 		%>
 		<br><br>
@@ -101,13 +101,32 @@
 			<option><%=rs.getString(1)%></option>
 			<%
 				}
-			con.close();
 			%>
 			
 		</select> 
 		
 		<input type = "submit" id="addsong" name = "addsong" value = "Add To Playlist">
-		</form></center>
+		</form>
+		<%Statement st2 = con.createStatement();
+		ResultSet rs2 = st2.executeQuery("select trackname from  playlists where usename = '"+(String)session.getAttribute("userId")+"';");
+		%>
+		<form action="removeplaylist.jsp">
+		Song Name: <select name="trackname1">
+
+			<%
+				while (rs2.next()) {
+			%>
+			<option><%=rs2.getString(1)%></option>
+			<%
+				}
+			con.close();
+			%>
+			
+		</select> 
+		
+		<input type = "submit" id="delsong" name = "delsong" value = "Remove from Playlist">
+		</form>
+		</center>
 
 </body>
 </html>
