@@ -37,6 +37,7 @@
     <li><a><input id="search-bar" name="search" type="text" placeholder="Search to find tracks">
       <input id="search-button" name="search_submit" type="submit" value="Search"></a></li>
       </form>
+      <div class="clear"></div>
   </ul>
 </div>
 <br><br>
