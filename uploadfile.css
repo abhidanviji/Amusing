@@ -2,13 +2,23 @@
   upload button styles
 ******************************************/
 .file-upload {
+  position: left;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 1px;
+}
+
+.live{
   position: relative;
   display: inline-block;
-}
+  margin-left: 500px;
+  margin-top: 10px;
+  top:-80px;
+ }
 
 .file-upload__label {
   display: block;
-  padding: 1em 1.5em;
+  padding: 0.7em 1.2em;
   color: #fff;
   background: #222;
   border-radius: .5em;
@@ -20,8 +30,8 @@
 }
 
 .file-upload__input {
-  position: absolute;
-  left: 0;
+  position: left;
+  left: 5;
   top: 0;
   right: 10;
   bottom: 0;
@@ -29,17 +39,56 @@
   width: 0;
   height: 100%;
   opacity: 0;
+  margin-left: 10px;
 }
+
+.record{
+  display: block;
+  padding: 2.5em 1.2em;
+  color: #fff;
+  background: #222;
+  border-radius: .5em;
+  transition: background .2s;
+}
+
+.record:hover{
+  cursor: pointer;
+  background: #000;
+
+}
+
+
 
 /*****************************************
  design styles
 ******************************************/
 html {
-  font-family: 'helvetica neue', 'arial', sans-serif;
+  font-family : "Open Sans", sans-serif;
   font-size: 20px;
   font-weight: bold;
   padding-top: 12em;
-  -webkit-font-smoothing: antialiased;
+  
   text-align: center;
-  background: #EE4F47;
+  background: #ededed;
+}
+
+
+
+body, html { height: 90%; }
+.outer {
+  width: 2px;
+  height: 150%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  top:-640px;
+}
+.inner {
+  position: absolute;
+  width:20%;
+  height: 50%;
+  background: grey;
+  top: 45%;
+  box-shadow: 0px 0px 30px 20px grey;
+ 
 }
