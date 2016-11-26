@@ -20,7 +20,7 @@ String name = "test";
    int maxFileSize = 5000 * 1024;
    int maxMemSize = 5000 * 1024;
    ServletContext context = pageContext.getServletContext();
-   String filePath = context.getInitParameter("file-upload");
+   String filePath = "C:\\Users\\Abhi\\workspace\\Amusing\\WebContent\\sampletest";
 
    // Verify the content type
    String contentType = request.getContentType();

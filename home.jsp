@@ -45,11 +45,10 @@
 <header>
     <div class="nav">
       <ul>
-        <li class="overview"><a href="#">Overview</a></li>
-        <li class="Likes"><a href="playlist.jsp">Playlists</a></li>
-        <li class="about"><a href="#">Albums</a></li>
-        <li class="History"><a href="#">History</a></li>
-        <li class="Friends"><a href="#">Friends</a></li>
+        <li class="notifications"><a href="#">Notifics</a></li>
+        <li class="charts"><a href="#">Charts</a></li>
+        <li class="discover"><a href="#">Discover</a></li>
+        
       </ul>
     </div>
   </header>
