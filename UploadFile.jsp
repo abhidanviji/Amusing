@@ -48,6 +48,7 @@ String name = "test";
  		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
  		String query = " insert into usertrack (username,trackname)values (?,?)";
  		String query1 = " insert into tracks (trackname)values (?)";
+ 		String query2 = " insert into notifications (username,noti)values (?,?)";
  		PreparedStatement preparedStmt = con.prepareStatement(query);
  		preparedStmt.setString(1, (String)session.getAttribute("userId"));
  		preparedStmt.setString(2, name);
@@ -55,6 +56,10 @@ String name = "test";
  		PreparedStatement preparedStmt1 = con.prepareStatement(query1);
  		preparedStmt1.setString(1, name);
  		preparedStmt1.execute();
+ 		PreparedStatement preparedStmt2 = con.prepareStatement(query2);
+ 		preparedStmt2.setString(1, (String)session.getAttribute("userId"));
+ 		preparedStmt2.setString(2, "Uploaded "+name);
+ 		preparedStmt2.execute();
  		con.close();
 
       }catch(Exception ex) {

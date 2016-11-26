@@ -19,7 +19,7 @@
   <li><a href="navigationdrop.jsp"> SOUNDCLOUD-AMUSE</a></li>
     <li><a href="home.jsp" title="Home"> Home</a></li>
     <li><a href="collection.jsp" title="Collection"> Collection</a></li>
-    <li><a href="http://localhost:8095/NewFileUpload/index.html" title="Upload"> Upload</a></li>
+    <li><a href="fileupload.html" title="Upload"> Upload</a></li>
 
     <li><a href="###" title="Lyrics"> Lyrics</a>
      <ul>
@@ -45,7 +45,7 @@
 <header>
     <div class="nav">
       <ul>
-        <li class="notifications"><a href="#">Notifics</a></li>
+        <li class="notifications"><a href="noti.jsp">Notifics</a></li>
         <li class="charts"><a href="#">Charts</a></li>
         <li class="discover"><a href="#">Discover</a></li>
         

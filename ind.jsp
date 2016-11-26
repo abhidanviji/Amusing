@@ -79,9 +79,14 @@
 		
 		
 		
-		<input type = "submit" value="Back"/>
+		<center><input type = "submit" value="Back"/>
 		</form>
+		<input type = "button" value = "Download"/>
+		
+		<input type = "button" value = "Report"/>
+		
 		<input type = "button" value = "Next"/>
+		</center>
 		<script type="text/javascript" src="controls.js"></script>
 	</body>
 </html>
