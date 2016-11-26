@@ -60,19 +60,48 @@
 		<%	
 		}
 		
-		String lc = request.getParameter("likecount");
-		String dc = request.getParameter("dislikecount");
-		String name = request.getParameter("trackname");
+		int lc = Integer.parseInt(request.getParameter("likecount"));
+		int dc = Integer.parseInt(request.getParameter("dislikecount"));
+		String trackname = request.getParameter("trackname");
+		String user = (String)session.getAttribute("userId");
+		int prevlc = -1,prevdc = -1;
 		
-		String query = " update tracks set likes = ? where trackname = '"+name+"';";
+		
+		
+		Statement stmt = con.createStatement();
+		ResultSet rset = stmt.executeQuery("select likes,dislikes from tracks where trackname = '"+trackname+"';");
+		
+		if(rset.next()){
+			prevlc = rset.getInt(1);
+			prevdc = rset.getInt(2);
+		}
+		
+		if(prevlc != lc){
+		String query = " update tracks set likes = ? where trackname = '"+trackname+"';";
 		PreparedStatement ps = con.prepareStatement(query);
-		ps.setInt(1, Integer.parseInt(lc));
+		ps.setInt(1, lc);
 		ps.execute();
 		
-		String query1 = " update tracks set dislikes = ? where trackname = '"+name+"';";
+		String sql = " insert into notifications (username, noti) values (?, ?)";
+		PreparedStatement preparedStmt = con.prepareStatement(sql);
+		preparedStmt.setString(1, user);
+		preparedStmt.setString(2,"Likes "+trackname );
+		preparedStmt.execute();
+		}
+		
+		if(prevdc != dc){
+		String query1 = " update tracks set dislikes = ? where trackname = '"+trackname+"';";
 		PreparedStatement ps1 = con.prepareStatement(query1);
-		ps1.setInt(1, Integer.parseInt(dc));
+		ps1.setInt(1, dc);
 		ps1.execute();
+		
+		String sql1 = " insert into notifications (username, noti) values (?, ?)";
+		PreparedStatement preparedStmt1 = con.prepareStatement(sql1);
+		preparedStmt1.setString(1, user);
+		preparedStmt1.setString(2,"Dislikes "+trackname );
+		preparedStmt1.execute();
+		}
+		
 		con.close();
 		}catch(Exception e){
 			System.out.println("Error - "+e);

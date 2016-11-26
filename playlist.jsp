@@ -53,13 +53,41 @@
     </div>
   </header>
   
-  <center><h1>Your favourites!!</h1>
+  <center>
   <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		int count = 1;
+		Statement stmt = con.createStatement();
+		ResultSet rset = stmt.executeQuery("select trackname from playlists where usename = '"+(String)session.getAttribute("userId")+"';");
+		
+		if(!rset.next()){
+			Statement stmt1 = con.createStatement();
+			ResultSet rset1 = stmt.executeQuery("select trackname from usertrack");
+		%>
+			<form action="addplaylist.jsp">
+			Song Name: <select name="trackname">
+
+				<%
+					while (rset1.next()) {
+				%>
+				<option><%=rset1.getString(1)%></option>
+				<%
+					}
+				%>
+				
+			</select> 
+			
+			<input type = "submit" id="addsong" name = "addsong" value = "New Playlist">
+			</form>
+			<%
+		}
+		else{
+			%>
+			<h1>Your favourites!!</h1>
+			<%
 		Statement st1 = con.createStatement();
 		ResultSet rs1 = st1.executeQuery("select trackname from playlists where usename = '"+(String)session.getAttribute("userId")+"';");
 		
@@ -119,13 +147,17 @@
 			<option><%=rs2.getString(1)%></option>
 			<%
 				}
-			con.close();
+		
 			%>
 			
 		</select> 
 		
 		<input type = "submit" id="delsong" name = "delsong" value = "Remove from Playlist">
 		</form>
+		<%
+		}
+		con.close();
+		%>
 		</center>
 
 </body>
