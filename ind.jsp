@@ -81,7 +81,11 @@
 		
 		<center><input type = "submit" value="Back"/>
 		</form>
-		<input type = "button" value = "Download"/>
+		
+		<form action = "download.jsp">
+		<input type="hidden" name = "trk" value = <%=name%>/>
+		<input type = "submit" value = "Download"/>
+		</form>
 		
 		<input type = "button" value = "Report"/>
 		

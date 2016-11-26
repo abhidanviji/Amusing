@@ -41,17 +41,42 @@
     <div class="clear"></div>
   </ul>
 </div>
+<br><br>
+<center>
+<%@ page
+		import="java.io.*,java.util.*, javax.servlet.*,java.sql.*,javax.sql.*"%>
+	<%
+		try {
+			String track = request.getParameter("trk");
+			String home = System.getProperty("user.home");
+			File path = new File(home + "/Downloads/Amuse/");
+			if (!path.exists()) {
+				if (path.mkdir()) {
+					System.out.println("Directories are created!");
+				}
+			}
+			File src = new File("C:/Users/Abhi/workspace/Amusing/WebContent/sampletest/" + track);
 
-<header>
-    <div class="nav">
-      <ul>
-        <li class="notifications"><a href="noti.jsp">Notifics</a></li>
-        <li class="charts"><a href="#">Charts</a></li>
-        <li class="discover"><a href="#">Discover</a></li>
-        
-      </ul>
-    </div>
-  </header>
-  
+			File dest = new File(home + "/Downloads/Amuse/" + track);
+
+			dest.createNewFile();
+
+			InputStream inin = new FileInputStream(src);
+			OutputStream inout = new FileOutputStream(dest);
+			byte[] buffer = new byte[1024];
+			int length;
+			//copy the file content in bytes 
+			while ((length = inin.read(buffer)) > 0) {
+				inout.write(buffer, 0, length);
+			}
+			out.println("File downloaded successfully to " + home + "\\Downloads\\Amuse");
+			inin.close();
+			inout.flush();
+			inout.close();
+		} catch (Exception e) {
+			System.out.println("Error" + e);
+		}
+	%>
+</center>
 </body>
 </html>
