@@ -5,13 +5,21 @@
 <title>File Uploading Form</title>
 </head>
 <body>
-<h3>File Upload:</h3>
-Select a file to upload: <br />
+<center><h3>File Upload:</h3>
+Select a file to upload: <br><br>
 <form action="UploadFile.jsp" method="post"
                         enctype="multipart/form-data">
-<input type="file" name="file" size="50" />
-<br />
+Genre:<select name="genre">
+  <option value="fast">Fast Beat</option>
+  <option value="rom">Romantic Number</option>
+  <option value="book">Audio Book</option>
+  <option value="other">Other</option>
+</select>
+<br><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFile:<input type="file" name="file" size="50" />
+<br><br>
 <input type="submit" value="Upload File" />
 </form>
+</center>
 </body>
 </html>
