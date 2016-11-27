@@ -47,51 +47,7 @@
 		import="java.io.*,java.util.*, javax.servlet.*,java.sql.*,javax.sql.*"%>
 	<%
 		try {
-			
-			Class.forName("com.mysql.jdbc.Driver");
-			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
-			int lc = Integer.parseInt(request.getParameter("likecount"));
-			int dc = Integer.parseInt(request.getParameter("dislikecount"));
 			String track = request.getParameter("trk");
-			String user = (String)session.getAttribute("userId");
-			int prevlc = -1,prevdc = -1;
-			
-			
-			
-			Statement stmt = con.createStatement();
-			ResultSet rset = stmt.executeQuery("select likes,dislikes from tracks where trackname = '"+track+"';");
-			
-			if(rset.next()){
-				prevlc = rset.getInt(1);
-				prevdc = rset.getInt(2);
-			}
-			
-			if(prevlc != lc){
-			String query = " update tracks set likes = ? where trackname = '"+track+"';";
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, lc);
-			ps.execute();
-			
-			String sql = " insert into notifications (username, noti) values (?, ?)";
-			PreparedStatement preparedStmt = con.prepareStatement(sql);
-			preparedStmt.setString(1, user);
-			preparedStmt.setString(2,"Likes "+track );
-			preparedStmt.execute();
-			}
-			
-			if(prevdc != dc){
-			String query1 = " update tracks set dislikes = ? where trackname = '"+track+"';";
-			PreparedStatement ps1 = con.prepareStatement(query1);
-			ps1.setInt(1, dc);
-			ps1.execute();
-			
-			String sql1 = " insert into notifications (username, noti) values (?, ?)";
-			PreparedStatement preparedStmt1 = con.prepareStatement(sql1);
-			preparedStmt1.setString(1, user);
-			preparedStmt1.setString(2,"Dislikes "+track );
-			preparedStmt1.execute();
-			}
-			
 			String home = System.getProperty("user.home");
 			File path = new File(home + "/Downloads/Amuse/");
 			if (!path.exists()) {
