@@ -67,6 +67,7 @@
 		</div>
 		
         <script>
+        
                
         (function(d, s, id) {
          var js, fjs = d.getElementsByTagName(s)[0];
@@ -79,17 +80,22 @@
 		
 		
 		
-		<center><input type = "submit" value="Back"/>
+		<center><input id = "but" type = "submit" value="Back"/>
 		</form>
-		
+		<br>
+		<br>
 		<form action = "download.jsp">
 		<input type="hidden" name = "trk" value = <%=name%>/>
-		<input type = "submit" value = "Download"/>
+		<input type="hidden" name = "lc" value = <%=lc%>/>
+		<input type="hidden" name = "dc" value = <%=dc%>/>
+		<input id = "but" type = "submit" value = "Download"/>
 		</form>
-		
-		<input type = "button" value = "Report"/>
-		
-		<input type = "button" value = "Next"/>
+		<br>
+		<form action = "report.jsp">
+		<input id = "but" type = "submit" value = "Report"/>
+		</form>
+		<br>
+		<input id = "but" type = "button" value = "Next"/>
 		</center>
 		<script type="text/javascript" src="controls.js"></script>
 	</body>

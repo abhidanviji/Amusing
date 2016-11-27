@@ -30,7 +30,6 @@ volumeslider.addEventListener("change",setvolume,false);
 
 function myLikeFunction(){
 	
-	alert("like");
 	if(alike == 0 && adislike != 1){
 		likeButton.style.backgroundImage = 'url(../images/lik.png)';
 		alike = 1;

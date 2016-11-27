@@ -1,136 +1,147 @@
-body{
-	top:100px;
-	position:relative;
-	background-color:#000000;
+body {
+	top: 100px;
+	position: relative;
+	background-color: #000000;
 }
 
-#wrapper{
-	width:640px;
-	margin:10px auto; 
-	padding-bottom:20px;
+#wrapper {
+	width: 640px;
+	margin: 10px auto;
+	padding-bottom: 20px;
 }
 
-nav{
-	background-color:rgb(250,250,250);
-	width:640px;
-	padding-bottom:20px;
-}
-#blackBar{
-	background-color:#000000;
-	width:640px;
-	padding-bottom:20px;
-}
-#greyBar{
-	background-color:rgb(250,250,250);
-	width:640px;
-	padding-bottom:20px;
+nav {
+	background-color: rgb(250, 250, 250);
+	width: 640px;
+	padding-bottom: 20px;
 }
 
-#fb-comments{
-	position:relative;
-	margin:10px auto;
+#blackBar {
+	background-color: #000000;
+	width: 640px;
+	padding-bottom: 20px;
 }
 
-#defaultBar{
-	width:640px;
-	position:relative;
-	background-color:#606060;
-	height:10px;
+#greyBar {
+	background-color: rgb(250, 250, 250);
+	width: 640px;
+	padding-bottom: 20px;
 }
 
-#progressBar{
-	position:absolute;
-	height:10px;
-	background-color:#3498db;
-	width:0px;
+#fb-comments {
+	position: relative;
+	margin: 10px auto;
 }
 
-#playButton{
-	position:relative;
-	background-color:rgb(250,250,250);
-	border:none;
-	height:32px;
-	width:32px;
-	background-image:url(../images/media_play.png);
-	background-repeat:no-repeat;
-	background-position:center;
-	outline:none;
+#defaultBar {
+	width: 640px;
+	position: relative;
+	background-color: #606060;
+	height: 10px;
 }
 
-#muteButton{
-	position:relative;
-	background-color:rgb(250,250,250);
-	border:none;
-	height:32px;
-	width:32px;
-	background-image:url(../images/speaker.png);
-	background-repeat:no-repeat;
-	background-position:center;
-	outline:none;
+#progressBar {
+	position: absolute;
+	height: 10px;
+	background-color: #3498db;
+	width: 0px;
 }
 
-#fwdButton{
-	position:relative;
-	background-color:rgb(250,250,250);
-	border:none;
-	height:32px;
-	width:32px;
-	background-image:url(../images/forward.png);
-	background-repeat:no-repeat;
-	background-position:center;
-	outline:none;
+#playButton {
+	position: relative;
+	background-color: rgb(250, 250, 250);
+	border: none;
+	height: 32px;
+	width: 32px;
+	background-image: url(../images/media_play.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	outline: none;
 }
 
-#rwdButton{
-	position:relative;
-	background-color:rgb(250,250,250);
-	border:none;
-	height:32px;
-	width:32px;
-	background-image:url(../images/rewind.png);
-	background-repeat:no-repeat;
-	background-position:center;
-	outline:none;
+#muteButton {
+	position: relative;
+	background-color: rgb(250, 250, 250);
+	border: none;
+	height: 32px;
+	width: 32px;
+	background-image: url(../images/speaker.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	outline: none;
 }
 
-#likeButton{
-	position:relative;
-	background-color:rgb(250,250,250);
-	border:none;
-	height:32px;
-	width:32px;
-	background-image:url(../images/like.png);
-	background-repeat:no-repeat;
-	background-position:center;
-	outline:none;
+#fwdButton {
+	position: relative;
+	background-color: rgb(250, 250, 250);
+	border: none;
+	height: 32px;
+	width: 32px;
+	background-image: url(../images/forward.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	outline: none;
 }
 
-#dislikeButton{
-	position:relative;
-	background-color:rgb(250,250,250);
-	border:none;
-	height:32px;
-	width:32px;
-	background-image:url(../images/dislike.png);
-	background-repeat:no-repeat;
-	background-position:center;
-	outline:none;
+#rwdButton {
+	position: relative;
+	background-color: rgb(250, 250, 250);
+	border: none;
+	height: 32px;
+	width: 32px;
+	background-image: url(../images/rewind.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	outline: none;
 }
 
-#muteButton:active,#playButton:active,#fwdButton:active,#rwdButton:active,#likeButton:active,#dislikeButton:active{
-	position:relative;
-	top:2px;
+#likeButton {
+	position: relative;
+	background-color: rgb(250, 250, 250);
+	border: none;
+	height: 32px;
+	width: 32px;
+	background-image: url(../images/like.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	outline: none;
 }
 
-input#volumeslider{ 
-width: 200px;
+#dislikeButton {
+	position: relative;
+	background-color: rgb(250, 250, 250);
+	border: none;
+	height: 32px;
+	width: 32px;
+	background-image: url(../images/dislike.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	outline: none;
 }
 
+#but {
+	width: 250px;
+	height: 35px;
+	font-family: 'Calibri';
+	font-weight: 20;
+	font-size: 17px;
+	line-height: 5px;
+	color: #666;
+	margin: 3px;
+}
+
+#muteButton:active, #playButton:active, #fwdButton:active, #rwdButton:active,
+	#likeButton:active, #dislikeButton:active {
+	position: relative;
+	top: 2px;
+}
+
+input#volumeslider {
+	width: 200px;
+}
 
 input.count {
 	background: transparent;
-    border: none;
-    width: 20px;
+	border: none;
+	width: 20px;
 }
-
-
