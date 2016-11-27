@@ -2,24 +2,135 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>File Uploading Form</title>
+<title>Amusing</title>
+<link rel="stylesheet"  type="text/css" href="navigationdrop.css" >
+<script src="src/recorder.js"></script>
+<script src="src/Fr.voice.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/app.js"></script>
 </head>
 <body>
-<center><h3>File Upload:</h3>
-Select a file to upload: <br><br>
-<form action="UploadFile.jsp" method="post"
-                        enctype="multipart/form-data">
-Genre:<select name="genre">
-  <option value="fast">Fast Beat</option>
-  <option value="rom">Romantic Number</option>
-  <option value="book">Audio Book</option>
-  <option value="other">Other</option>
-</select>
-<br><br>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFile:<input type="file" name="file" size="50" />
-<br><br>
-<input type="submit" value="Upload File" />
-</form>
-</center>
+<div class="wrapper">
+   
+  <div class="top"> 
+    
+  </div>
+  
+  <ul class="navigation">
+  <li><a href="navigationdrop.jsp"> SOUNDCLOUD-AMUSE</a></li>
+    <li><a href="home.jsp" title="Home"> Home</a></li>
+    <li><a href="collection.jsp" title="Collection"> Collection</a></li>
+    <li><a href="fileupload.html" title="Upload"> Upload</a></li>
+
+    <li><a href="###" title="Lyrics"> Lyrics</a>
+     <ul>
+        <li><a href="lyrics.html" title="Upload"> Upload</a></li>
+        <li><a href="lyricreceiver.jsp" title="View"> View</a></li>
+     </ul>
+    <li>
+    <li><a href="###" title="Message">Message</a>
+      <ul>
+        <li><a href="messagesublime.jsp" title="Send">Send</a></li>
+        <li><a href="receive.jsp" title="View">View</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html" title="Logout">Logout</a></li>
+    <form action = "searchresult.jsp" >
+    <li><a><input id="search-bar" name="search" type="text" placeholder="Search to find tracks">
+      <input id="search-button" name="search_submit" type="submit" value="Search"></a></li>
+      </form>
+      <div class="clear"></div>
+  </ul>
+</div>
+	<center>
+		<h3>File Upload:</h3>
+		Select a file to upload: <br> 
+		<form action="UploadFile.jsp" method="post"
+			enctype="multipart/form-data">
+			Genre:<select name="genre">
+				<option value="fast">Fast Beat</option>
+				<option value="rom">Romantic Number</option>
+				<option value="book">Audio Book</option>
+				<option value="other">Other</option>
+			</select> <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input type="file" name="file" size="50" /> <br> <input
+				type="submit" value="Upload File" />
+		</form>
+
+		<h3>Or Record Live and Upload Above:</h3>
+
+		<center>
+			<audio controls src="" id="audio"></audio>
+			<div style="margin: 10px;">
+		</center>
+
+		</div>
+		
+		<center>
+			<a class="button" id="record">Record</a> <a class="button " id="stop">Reset</a>
+			<a class="button " id="play">Play</a> <a class="button "
+				id="download">Download</a>
+			</div>
+
+			<br>
+			<canvas id="level" height="200" width="500"></canvas>
+			</br>
+		</center>
+		<p>If your life is worth living, Its worth recording !</p>
+		<style>
+.button {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+	outline: bold;
+	font-size: 13px;
+	text-decoration: none !important;
+	text-align: center;
+	color: #fff;
+	background-color: #4D90FE;
+	background-image: linear-gradient(top, #4D90FE, #4787ED);
+	background-image: -ms-linear-gradient(top, #4D90FE, #4787ED);
+	background-image: -o-linear-gradient(top, #4D90FE, #4787ED);
+	background-image: linear-gradient(top, #4D90FE, #4787ED);
+	border: 1px solid #4787ED;
+	box-shadow: 0 1px 3px #BFBFBF;
+}
+
+a.button {
+	color: #fff;
+}
+
+.button:hover {
+	box-shadow: inset 0px 1px 1px #8C8C8C;
+}
+
+.button.disabled {
+	box-shadow: none;
+	opacity: 0.7;
+}
+
+canvas {
+	display: block;
+	color: #fff;
+	outline-width: 2px;
+	outline-color: solid black;
+	border-color: solid black;
+	border-radius: 10px;
+}
+
+
+p {
+	font-family: verdana;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	opacity: 0.2;
+	filter: alpha(opacity = 50);
+}
+</style>
+	</center>
 </body>
 </html>
