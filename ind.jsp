@@ -85,9 +85,9 @@
 		<br>
 		<br>
 		<form action = "download.jsp">
-		<input type="hidden" name = "trk" value = <%=name%>/>
-		<input type="hidden" name = "lc" value = <%=lc%>/>
-		<input type="hidden" name = "dc" value = <%=dc%>/>
+		<input type="hidden" name = "trk" id = "trk" value = <%=name%>>
+		<input type="hidden" name = "lc" id = "lc" value = <%=lc%>>
+		<input type="hidden" name = "dc" id = "dc" value = <%=dc%>>
 		<input id = "but" type = "submit" value = "Download"/>
 		</form>
 		<br>

@@ -35,12 +35,14 @@ function myLikeFunction(){
 		alike = 1;
 		likecount = +likecount+1
 		document.getElementById("likecount").value = likecount;
+		document.getElementById("lc").value = likecount;
 		}
 		else if (alike == 1){
 			likeButton.style.backgroundImage = 'url(../images/like.png)';
 			alike = 0;
 			likecount = +likecount-1
 			document.getElementById("likecount").value = likecount;
+			document.getElementById("lc").value = likecount;
 		}
 }
 
@@ -51,12 +53,14 @@ function myDislikeFunction(){
 		adislike = 1;
 		dislikecount = +dislikecount+1
 		document.getElementById("dislikecount").value = dislikecount;
+		document.getElementById("dc").value = dislikecount;
 		}
 		else if(adislike == 1){
 			dislikeButton.style.backgroundImage = 'url(../images/dislike.png)';
 			adislike = 0;
 			dislikecount = +dislikecount-1
 			document.getElementById("dislikecount").value = dislikecount;
+			document.getElementById("dc").value = dislikecount;
 		}
 }
 
