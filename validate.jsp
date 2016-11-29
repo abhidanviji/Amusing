@@ -44,31 +44,36 @@
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
-	String uname = "";
-String userid=request.getParameter("username"); 
-session.putValue("userid",userid); 
-String pwd=request.getParameter("password"); 
-Class.forName("com.mysql.jdbc.Driver"); 
-java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","oracle"); 
-Statement st= con.createStatement(); 
-ResultSet rs=st.executeQuery("select * from amlogin where userid='"+userid+"'"); 
+	try{
+	    String username = request.getParameter("username");   
+	    String password = request.getParameter("password");
+	    System.out.println("Username in validate - "+username);
+	    session.setAttribute("userId",username);
+	    Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
+	    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","oracle");    
+	    PreparedStatement pst = conn.prepareStatement("Select userid,password from amlogin where userid=? and password=?");
 
-if(rs.next()) 
-{ 
-if(rs.getString(2).equals(pwd)) 
-{
-uname = rs.getString("fname");
-	session.setAttribute("userId", userid);
-	
-} 
-else 
-{ 
-out.println("Invalid password try again"); 
-} 
-} 
-else 
+
+	    pst.setString(1, username);
+	    pst.setString(2, password);
+	    ResultSet rs = pst.executeQuery();
+	    String message = "inv";
+	    if(rs.next())           
+	      
+	    	response.sendRedirect("navigationdrop.jsp");
+	        
+	    
+	    else
+	    	response.sendRedirect("invalidlogin.html");	
+	    	
+	}
+	 
+
+	catch(Exception e){       
+	   out.println("Something went wrong !! Please try again");       
+	} 
+	 
 %>
-<center>Welcome <%=uname%>!<br>
 <a href="navigationdrop.jsp">Click to proceed to home page.</a></center>
 </body>
 </html>

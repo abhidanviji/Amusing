@@ -11,7 +11,6 @@
 <%@ page import ="javax.sql.*" %>
 <%
 String user=request.getParameter("userid"); 
-session.putValue("userid",user); 
 String pwd=request.getParameter("pwd"); 
 String fname=request.getParameter("fname"); 
 String lname=request.getParameter("lname"); 
@@ -28,7 +27,7 @@ out.println("Registered");
 
 %>
 <script>
-window.location="Login.html";
+window.location="index.html";
 </script>
 <a href ="Login.html">Login</a><br/><br/>
 <a href="index.html">Home</a>
