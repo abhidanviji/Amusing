@@ -20,18 +20,14 @@
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement st = con.createStatement();
 		ResultSet rs;
-		int i = st.executeUpdate(
-				"insert into friend values ('" + userna + "','" + user + "','" + message + "','" + Status + "')");
-
-		out.println("Registered");
+		if(user != null){
+		int i = st.executeUpdate("insert into friend values ('" + userna + "','" + user + "','" + message + "','" + Status + "')");
+		}
 	%>
 	<script>
-		alert("user registered");
-		window.location = "navigationdrop.jsp";
+		alert("Request Sent");
+		window.location = "collection.jsp";
 	</script>
-	<a href="Login.html">Login</a>
-	<br />
-	<br />
-	<a href="index.html">Home</a>
+	
 </body>
 </html>

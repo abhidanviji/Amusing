@@ -18,13 +18,23 @@
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement st = con.createStatement();
 		ResultSet rs;
+		if(userid != null && userfrom != null){
 		int i = st.executeUpdate(
 				"Update  friend set status=1 where Friendfrom='" + userfrom + "' and Friendto='" + userid + "';");
+	
+		String query2 = " insert into notifications (username,noti)values (?,?)";
+		PreparedStatement preparedStmt2 = con.prepareStatement(query2);
+		preparedStmt2.setString(1, (String) session.getAttribute("userId"));
+		preparedStmt2.setString(2, "Became friend of " + userfrom);
+		preparedStmt2.execute();
+		}
+		con.close();
 	%>
 	<script>
-		alert("updated successfully");
+		alert("You are now a friend!");
 		window.location = "collection.jsp";
 	</script>
+	
 	
 </body>
 </html>
