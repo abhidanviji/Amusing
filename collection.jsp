@@ -46,7 +46,7 @@
 	<ul>
 		<li class="overview"><a href="#">Overview</a></li>
 		<li class="Likes"><a href="playlist.jsp">Playlists</a></li>
-		<li class="about"><a href="#">Albums</a></li>
+		<li class="about"><a href="albums.jsp">Albums</a></li>
 		<li class="History"><a href="#">History</a></li>
 		<li class="Friends"><a href="#">Friends</a>
 

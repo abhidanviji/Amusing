@@ -40,6 +40,8 @@
     <div class="clear"></div>
   </ul>
 </div>
+<br><br>
+<center>
 <div id="track">
 <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
@@ -53,9 +55,9 @@
 		while (rs.next()) {	
 		%>
 		<br><br>
-		<center><form action = ind.jsp>
+		<form action = ind.jsp>
 		<input type = "submit" id="track" name = "track" value = <%=rs.getString(1)%>>
-		</form></center>
+		</form>
 				
 		<%	
 		}
@@ -75,6 +77,6 @@
 		con.close();
 		%>
 </div>
-
+</center>
 </body>
 </html>
