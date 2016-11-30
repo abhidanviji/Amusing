@@ -13,7 +13,10 @@
 	<%@ page import="javax.sql.*"%>
 	<%
 		String name = request.getParameter("track");
-
+		String pagecall = request.getParameter("page");
+		if(pagecall.equals("navigationdrop.jsp")){
+			pagecall = "songupdate.jsp";
+		}else 
 		System.out.println(name);
 		int lc = 0;
 		int dc = 0;
@@ -52,7 +55,7 @@
 		</div>
 		<div id="extras">
 			<br>
-			<form action='songupdate.jsp' method=post>
+			<form action=<%=pagecall%> method=post>
 				&nbsp&nbsp&nbsp&nbsp <input type="text" id="likeButton" name="count"
 					style="color: transparent; text-shadow: 0 0 0;"
 					onclick="myLikeFunction();" /> <input class="count" id="likecount"

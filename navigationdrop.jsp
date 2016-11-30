@@ -53,6 +53,7 @@
 		%>
 		<br><br>
 		<center><form action = ind.jsp>
+		<input type="hidden" name = "page" value="navigationdrop.jsp">
 		<input type = "submit" id="track" name = "track" value = <%=rs.getString(1)%>>
 		</form></center>
 				

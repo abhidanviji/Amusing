@@ -46,7 +46,7 @@
     <div class="nav">
       <ul>
         <li class="notifications"><a href="noti.jsp">Notifics</a></li>
-        <li class="charts"><a href="#">Charts</a></li>
+        <li class="charts"><a href="charts.jsp">Charts</a></li>
         <li class="discover"><a href="#">Discover</a></li>
         
       </ul>
