@@ -55,16 +55,17 @@
 	<center>
 		<form action="charts.jsp">
 			Select Genre:<select name="genre" id="genre">
-				<option value="fast">Fast Beat</option>
-				<option value="rom">Romantic Number</option>
-				<option value="book">Audio Book</option>
-				<option value="other">Other</option>
+				<option value="Fast Beat">Fast Beat</option>
+				<option value="Romantic Number">Romantic Number</option>
+				<option value="Audio Book">Audio Book</option>
+				<option value="Other">Other</option>
 			</select> <input type="submit" value="Search">
 		</form>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
 		<%
 String genre = request.getParameter("genre");	
+		if(genre != null)
 		out.println("\n\nGenre - "+genre);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
