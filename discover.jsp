@@ -14,9 +14,7 @@
 		<div class="top"></div>
 
 		<ul class="navigation">
-			<li><a href="navigationdrop.jsp"> <%=(String) session.getAttribute("userId")%>'s
-					AMUSING
-			</a></li>
+			<li><a href="navigationdrop.jsp"> <%=(String)session.getAttribute("userId")%>'s AMUSING</a></li>
 			<li><a href="home.jsp" title="Home"> Home</a></li>
 			<li><a href="collection.jsp" title="Collection"> Collection</a></li>
 			<li><a href="fileupload.html" title="Upload"> Upload</a></li>
@@ -44,53 +42,52 @@
 	</div>
 
 	<header>
-
 	<div class="nav">
 		<ul>
-			<li class="overview"><a href="overview.jsp">Overview</a></li>
-			<li class="Likes"><a href="playlist.jsp">Playlists</a></li>
-			<li class="about"><a href="albums.jsp">Albums</a></li>
-			<li class="History"><a href="history.jsp">History</a></li>
-			<li class="Friends"><a href="friends.jsp">Friends</a></li>
+			<li class="notifications"><a href="noti.jsp">Notifics</a></li>
+			<li class="charts"><a href="charts.jsp">Charts</a></li>
+			<li class="discover"><a href="discover.jsp">Discover</a></li>
 
 		</ul>
-
 	</div>
 	</header>
 	<center>
+		<h3>You may like these tracks too! Check them!!</h3>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
 		<%
-			String user = (String) session.getAttribute("userId");
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
-
+			int count = 1;
+			String genrelist[] = new String[4];
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("select userid from amlogin where userid <> '" + user
-					+ "' and userid not in	(select Friendfrom from friend where status = 1 and Friendto = '" + user
-					+ "') and userid not in (select Friendto from friend where status = 1 and Friendfrom = '" + user
-					+ "')");
+			ResultSet rs = st.executeQuery(
+					"select distinct genre from tracks,usertrack where tracks.trackname = usertrack.trackname and username = '"
+							+ (String) session.getAttribute("userId") + "';");
+			while (rs.next()) {
+				genrelist[count] = rs.getString(1);
+				count++;
+			}
+
+			for (int i = 1; i <= count; i++) {
+				Statement st1 = con.createStatement();
+				ResultSet rs1 = st1.executeQuery(
+						"select song,tracks.trackname,genre from tracks,usertrack where tracks.trackname = usertrack.trackname and  genre='"
+								+ genrelist[i] + "' and username !='" + (String) session.getAttribute("userId") + "';");
+
+				while (rs1.next()) {
 		%>
-		<h1>Add Friend</h1>
-
-		<form action="form.jsp" method="post">
-			Select ID: <select name="username" required>
-				<%
-					while (rs.next()) {
-				%>
-				<option><%=rs.getString(1)%></option>
-				<%
-					}
-				%>
-
-			</select> <br> <br> Add Message: <br>
-			<textarea rows="4" cols="50" name="message"
-				placeholder="Enter your Message...">
-</textarea>
-			<br> <br> <br> <input type="submit" name="submit"
-				value="Send Request">
-
+		<form action=ind.jsp>
+			Genre:
+			<%=rs1.getString(3)%><br> <input type="hidden" name="page"
+				value="navigationdrop.jsp"> <input type="hidden" id="track"
+				name="track" value=<%=rs1.getString(2)%>> <input
+				type="submit" id="tr" name="tr" value=<%=rs1.getString(1)%>>
 		</form>
-		</center>
+		<%
+			}
+			}
+		%>
+	</center>
 </body>
 </html>

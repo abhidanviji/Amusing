@@ -14,7 +14,7 @@
 		<div class="top"></div>
 
 		<ul class="navigation">
-			<li><a href="navigationdrop.jsp"> SOUNDCLOUD-AMUSE</a></li>
+			<li><a href="navigationdrop.jsp"> <%=(String)session.getAttribute("userId")%>'s AMUSING</a></li>
 			<li><a href="home.jsp" title="Home"> Home</a></li>
 			<li><a href="collection.jsp" title="Collection"> Collection</a></li>
 			<li><a href="fileupload.html" title="Upload"> Upload</a></li>
@@ -45,8 +45,8 @@
 	<div class="nav">
 		<ul>
 			<li class="notifications"><a href="noti.jsp">Notifics</a></li>
-			<li class="charts"><a href="#">Charts</a></li>
-			<li class="discover"><a href="#">Discover</a></li>
+			<li class="charts"><a href="charts.jsp">Charts</a></li>
+			<li class="discover"><a href="discover.jsp">Discover</a></li>
 
 		</ul>
 	</div>
@@ -71,12 +71,13 @@ String genre = request.getParameter("genre");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 			if(genre != null){
 				Statement stmt = con.createStatement();
-				ResultSet rset = stmt.executeQuery("select trackname from tracks where genre = '"+genre+"';");
+				ResultSet rset = stmt.executeQuery("select song,tracks.trackname from tracks,usertrack where genre = '"+genre+"' and tracks.trackname = usertrack.trackname;");
 				while(rset.next()){
 					%>
 					<center><form action = ind.jsp>
 					<input type="hidden" name = "page" value="charts.jsp">
-					<input type = "submit" id="track" name = "track" value = <%=rset.getString(1)%>>
+					<input type="hidden" id="track" name="track" value=<%=rset.getString(2)%>>
+					<input type = "submit" id="tr" name = "tr" value = <%=rset.getString(1)%>>
 					</form></center>
 							
 					<%	

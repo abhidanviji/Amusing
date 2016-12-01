@@ -16,7 +16,7 @@
   </div>
   
   <ul class="navigation">
-  <li><a href="navigationdrop.jsp"> SOUNDCLOUD-AMUSE</a></li>
+  <li><a href="navigationdrop.jsp"><%=(String)session.getAttribute("userId")%>'s AMUSING</a></li>
     <li><a href="home.jsp" title="Home"> Home</a></li>
     <li><a href="collection.jsp" title="Collection"> Collection</a></li>
     <li><a href="fileupload.html" title="Upload"> Upload</a></li>
@@ -46,8 +46,8 @@
     <div class="nav">
       <ul>
         <li class="notifications"><a href="noti.jsp">Notifics</a></li>
-        <li class="charts"><a href="#">Charts</a></li>
-        <li class="discover"><a href="#">Discover</a></li>
+        <li class="charts"><a href="charts.jsp">Charts</a></li>
+        <li class="discover"><a href="discover.jsp">Discover</a></li>
         
       </ul>
     </div>
