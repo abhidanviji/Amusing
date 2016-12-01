@@ -53,7 +53,7 @@
     </div>
   </header>
  
- <center><table width=25% border=1> 
+ <center><table width=55% border=1> 
  <%@ page import="java.sql.*"%>
  <%@ page import="javax.sql.*"%>
  <%

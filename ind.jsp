@@ -13,6 +13,7 @@
 	<%@ page import="javax.sql.*"%>
 	<%
 		String name = request.getParameter("track");
+	System.out.println(name);
 		String pagecall = request.getParameter("page");
 		if(pagecall.equals("navigationdrop.jsp")){
 			pagecall = "songupdate.jsp";
@@ -103,7 +104,7 @@
 		<form action="report.jsp">
 			<input id="but" type="submit" value="Report" />
 		</form>
-		<br> <input id="but" type="button" value="Next" />
+		
 	</center>
 	<script type="text/javascript" src="controls.js"></script>
 </body>

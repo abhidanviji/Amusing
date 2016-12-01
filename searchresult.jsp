@@ -51,12 +51,14 @@
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement st = con.createStatement();
 		if(!search.equals("Search to find tracks")){
-		ResultSet rs = st.executeQuery("select trackname from usertrack where trackname LIKE  '%"+search+"%';");
+		ResultSet rs = st.executeQuery("select song,trackname from usertrack where trackname LIKE  '%"+search+"%';");
 		while (rs.next()) {	
 		%>
-		<br><br>
+	
 		<form action = ind.jsp>
-		<input type = "submit" id="track" name = "track" value = <%=rs.getString(1)%>>
+		<input type="hidden" name="page" value="navigationdrop.jsp">
+			<input type="hidden" id="track" name="track" value=<%=rs.getString(2)%>>
+		<input type = "submit" id="tr" name = "tr" value = <%=rs.getString(1)%>>
 		</form>
 				
 		<%	

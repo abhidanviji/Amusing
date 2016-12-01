@@ -135,7 +135,7 @@ body {
   margin: 0 auto;
 }
 
-#track {
+#tr {
   width: 250px;
   height: 35px;
   font-family: 'Calibri';
@@ -144,6 +144,7 @@ body {
   line-height: 5px;
   color: #666;
   margin:3px;
-  
+  word-wrap:break-word;
   
 }
+

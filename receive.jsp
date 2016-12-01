@@ -51,11 +51,12 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement statement = con.createStatement();
-		ResultSet rs = statement.executeQuery("select from_user,text from message where to_user = '"+(String)session.getAttribute("userId")+"';");
+		ResultSet rs = statement.executeQuery("select to_user,from_user,text from message where to_user = '"+(String)session.getAttribute("userId")+"' or from_user = '"+(String)session.getAttribute("userId")+"';");
 		 while(rs.next()){%>
       
       <p class="from">
-        <input name="from" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="From" id="from" value = <%=rs.getString("from_user")%>>
+        <input name="from" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="From" id="from" value = "From: <%=rs.getString("from_user")%>">
+        <input name="to" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="To" id="to" value = "To: <%=rs.getString("to_user")%>">
         <textarea name="message" type="text" class="validate[required,length[6,300]] feedback-input"  placeholder="Your Message" id="message" ><%=rs.getString("text")%></textarea>
       </p>
       <br>

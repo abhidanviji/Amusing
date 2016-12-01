@@ -53,7 +53,8 @@
 		<%
 			File file;
 			String name = "test";
-			String genre = "NA";
+			String genre = "other";
+			String song = "New Song";
 			int maxFileSize = 5000 * 1024;
 			int maxMemSize = 5000 * 1024;
 			ServletContext context = pageContext.getServletContext();
@@ -82,6 +83,12 @@
 								System.out.println("genre - " + genre);
 
 							}
+							
+							if (item.getFieldName().equals("song")) {
+								song = item.getString();
+								System.out.println("song - " + song);
+
+							}
 
 						}
 					}
@@ -93,12 +100,13 @@
 					Class.forName("com.mysql.jdbc.Driver");
 					java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root",
 							"oracle");
-					String query = " insert into usertrack (username,trackname)values (?,?)";
+					String query = " insert into usertrack (username,trackname,song)values (?,?,?)";
 					String query1 = " insert into tracks (trackname,genre)values (?,?)";
 					String query2 = " insert into notifications (username,noti)values (?,?)";
 					PreparedStatement preparedStmt = con.prepareStatement(query);
 					preparedStmt.setString(1, (String) session.getAttribute("userId"));
 					preparedStmt.setString(2, name);
+					preparedStmt.setString(3, song);
 					preparedStmt.execute();
 					PreparedStatement preparedStmt1 = con.prepareStatement(query1);
 					preparedStmt1.setString(1, name);

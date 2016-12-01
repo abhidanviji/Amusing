@@ -40,6 +40,7 @@
     <div class="clear"></div>
   </ul>
 </div>
+<br><br>
 <div id="track">
 <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
@@ -49,13 +50,17 @@
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select trackname from usertrack");
+		ResultSet rs = st.executeQuery("select song,trackname from usertrack where username = '"+(String) session.getAttribute("userId")+"';");
 		while (rs.next()) {	
 		%>
-		<br><br>
-		<center><form action = ind.jsp>
-		<input type = "submit" id="track" name = "track" value = <%=rs.getString(1)%>>
-		</form></center>
+		
+		<center>
+		<form action=ind.jsp>
+			<input type="hidden" name="page" value="navigationdrop.jsp">
+			<input type="hidden" id="track" name="track" value=<%=rs.getString(2)%>>
+			<input type="submit" id="tr" name="tr" value=<%=rs.getString(1)%>>
+		</form>
+		</center>
 				
 		<%	
 		}

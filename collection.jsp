@@ -42,23 +42,19 @@
 </div>
 
 <header>
+
 <div class="nav">
 	<ul>
 		<li class="overview"><a href="#">Overview</a></li>
 		<li class="Likes"><a href="playlist.jsp">Playlists</a></li>
 		<li class="about"><a href="albums.jsp">Albums</a></li>
 		<li class="History"><a href="#">History</a></li>
-		<li class="Friends"><a href="#">Friends</a>
+		<li class="Friends"><a href="friends.jsp">Friends</a>
 
-			<ul class = "friend">
-				<li class = "frnd"><a href="friendreq.jsp">Request Friend</a></li>
-				<li class = "frnd"><a href="message.jsp">Manage Friends</a></li>
-				<li class = "frnd"><a href="manage.jsp">View Friends</a></li>
-				
-			</ul>
 		</li>
 
 	</ul>
+
 </div>
 </header>
 

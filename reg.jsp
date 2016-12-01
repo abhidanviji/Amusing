@@ -20,7 +20,8 @@ java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:33
 "root","oracle"); 
 Statement st= con.createStatement(); 
 ResultSet rs; 
-int i=st.executeUpdate("insert into amlogin values ('"+user+"','"+pwd+"','"+fname+"',	'"+lname+"','"+email+"')"); 
+if(user != null && email != null)
+st.executeUpdate("insert into amlogin values ('"+user+"','"+pwd+"','"+fname+"',	'"+lname+"','"+email+"')"); 
 
 out.println("Registered"); 
 
