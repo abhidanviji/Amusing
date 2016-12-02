@@ -71,7 +71,7 @@ String genre = request.getParameter("genre");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 			if(genre != null){
 				Statement stmt = con.createStatement();
-				ResultSet rset = stmt.executeQuery("select song,tracks.trackname from tracks,usertrack where genre = '"+genre+"' and tracks.trackname = usertrack.trackname;");
+				ResultSet rset = stmt.executeQuery("select song,tracks.trackname from tracks,usertrack where genre = '"+genre+"' and tracks.trackname = usertrack.trackname and username = '"+(String)session.getAttribute("userId")+"';");
 				while(rset.next()){
 					%>
 					<center><form action = ind.jsp>

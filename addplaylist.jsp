@@ -60,6 +60,7 @@
   <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
+	try{
 	String user = (String)session.getAttribute("userId");
 	String trackname = request.getParameter("trackname");
 		Class.forName("com.mysql.jdbc.Driver");
@@ -79,7 +80,7 @@
 		preparedStmt.execute();
 		
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select trackname from usertrack where trackname not in (select trackname from  playlists);");
+		ResultSet rs = st.executeQuery("select trackname from usertrack where trackname not in (select trackname from  playlists) and username = '"+(String)session.getAttribute("userId")+"';");
 		
 		%>
 		<br><br>
@@ -98,6 +99,10 @@
 				
 		<%	
 		con.close();
+		}
+		catch(Exception e){
+			
+		}
 		%>
 		<input type = "submit" id="addsong" name = "addsong" value = "Add To Playlist">
 		</form></center>

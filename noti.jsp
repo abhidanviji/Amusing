@@ -58,10 +58,10 @@
  <%@ page import="javax.sql.*"%>
  <%
     try{
-   
+   String user = (String)session.getAttribute("userId");
     Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","oracle");    
-    PreparedStatement pst = conn.prepareStatement("select username,noti from notifications order by ts desc");
+    PreparedStatement pst = conn.prepareStatement("select username,noti,ts from notifications where username = '"+user+"' union select username,noti,ts from notifications where username in (select Friendfrom from friend where  status = 1 and friendto = '"+user+"')  or username in (select Friendto from friend where status = 1 and friendfrom = '"+user+"')  order by ts desc;");
   
     ResultSet rs = pst.executeQuery();
     

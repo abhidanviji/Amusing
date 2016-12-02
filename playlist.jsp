@@ -66,7 +66,7 @@
 		
 		if(!rset.next()){
 			Statement stmt1 = con.createStatement();
-			ResultSet rset1 = stmt.executeQuery("select trackname from usertrack");
+			ResultSet rset1 = stmt.executeQuery("select trackname from usertrack where username = '"+(String)session.getAttribute("userId")+"';");
 		%>
 			<form action="addplaylist.jsp">
 			Song Name: <select name="trackname">
@@ -105,7 +105,7 @@
 			
 		
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select trackname from usertrack where trackname not in (select trackname from  playlists where usename = '"+(String)session.getAttribute("userId")+"')");
+		ResultSet rs = st.executeQuery("select trackname from usertrack where trackname not in (select trackname from  playlists where usename = '"+(String)session.getAttribute("userId")+"') and username = '"+(String)session.getAttribute("userId")+"';");
 		
 		%>
 		<br><br>

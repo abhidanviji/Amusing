@@ -52,10 +52,11 @@
 		</ul>
 	</div>
 	</header>
-	<h3>Album Successfully Created</h3>
+	<center><h3>Album Successfully Created</h3></center>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
+	try{
 	String user = (String)session.getAttribute("userId");
 	String aname = request.getParameter("album");
 		String[] track = request.getParameterValues("trackname");
@@ -81,6 +82,9 @@
 			preparedStmt1.execute();
 			
 		}
+	}catch(Exception e){
+		
+	}
 	
 	%>
 
