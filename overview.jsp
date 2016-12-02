@@ -67,6 +67,7 @@
 
 	</div>
 	</header>
+	<div class = "ogrey">
 	<center><h3>Likes: </h3>
 	
 	<center>
@@ -94,9 +95,11 @@
 		
 	}
 	%>
-	<br>
-	<table width=55% border=1> </table></center>
+	</div>
 	
+	
+	<table width=55% border=1> </table></center>
+	<div class = "ogrey">
 	<center><h3>Playlists: </h3>
 	
 	<%
@@ -129,7 +132,8 @@
 		</script>
 	
 	<table width=55% border=1> </table></center>
-	
+	</div>
+	<div class = "ogrey">
 	<center><h3>Albums: </h3>
 	
 	<%
@@ -148,10 +152,11 @@
 		<%
 			}
 		%>
-		<br>
+		
 	
 	<table width=55% border=1> </table></center>
-	
+	</div>
+	<div class = "ogrey">
 	<center><h3>History: </h3>
 	<center><table width=55% border=1> 
 
@@ -177,20 +182,20 @@ catch(Exception e){
 </table></center><br>
 	<table width=55% border=1> </table></center>
 	
-	
-	
+	</div>
+	<div class = "ogrey">
 	<center><h3>Friends: </h3>
 	
 	<h4 align="center">
 	<font><strong>List of Friends</strong></font>
 </h4>
-<table align="center" cellpadding="5" cellspacing="5" border="1" width=55% >
+<table align="center" border="1" width=55% >
 	<tr>
 
 	</tr>
-	<tr bgcolor="#A52A2A" >
+	<tr >
 
-		<td align = "center"><font color="black"><b>Friends</b></td>
+		<td align = "center"><font color="white"><b>Friends</b></td>
 
 	</tr>
 	<%
@@ -201,9 +206,9 @@ catch(Exception e){
 			ResultSet resultSet = statement.executeQuery(sql);
 			while (resultSet.next()) {
 	%>
-	<tr bgcolor="#DEB887" align = "center" >
+	<tr align = "center" >
 
-		<td><font color="black"><%=resultSet.getString("Friendto")%></td>
+		<td><font color="white"><%=resultSet.getString("Friendto")%></td>
 
 
 	</tr>
@@ -215,7 +220,10 @@ catch(Exception e){
 		}
 	%>
 </table>
+</div>
 </center>
+
 <% con.close();%>
 </body>
+
 </html>

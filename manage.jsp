@@ -84,7 +84,7 @@
 	<tr>
 
 	</tr>
-	<tr bgcolor="#A52A2A" >
+	<tr >
 
 		<td align = "center"><font color="black"><b>Friends</b></td>
 
@@ -98,7 +98,7 @@
 			resultSet = statement.executeQuery(sql);
 			while (resultSet.next()) {
 	%>
-	<tr bgcolor="#DEB887" align = "center" >
+	<tr align = "center" >
 
 		<td><font color="black"><%=resultSet.getString("Friendto")%></td>
 
