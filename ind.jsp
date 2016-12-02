@@ -13,16 +13,25 @@
 	<%@ page import="javax.sql.*"%>
 	<%
 		String name = request.getParameter("track");
-	System.out.println(name);
-		String pagecall = request.getParameter("page");
-		if(pagecall.equals("navigationdrop.jsp")){
-			pagecall = "songupdate.jsp";
-		}else 
 		System.out.println(name);
+        String pagecall = request.getParameter("page");
+		if (pagecall.equals("navigationdrop.jsp")) {
+			pagecall = "songupdate.jsp";
+		} 
+		 
+		else
+			System.out.println(name);
 		int lc = 0;
 		int dc = 0;
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
+
+		String sql1 = " insert into history (user, track) values (?, ?)";
+		PreparedStatement preparedStmt1 = con.prepareStatement(sql1);
+		preparedStmt1.setString(1, (String) session.getAttribute("userId"));
+		preparedStmt1.setString(2, name);
+		preparedStmt1.execute();
+
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery("select likes,dislikes from tracks where trackname = '" + name + "';");
 		if (rs.next()) {
@@ -104,7 +113,7 @@
 		<form action="report.jsp">
 			<input id="but" type="submit" value="Report" />
 		</form>
-		
+
 	</center>
 	<script type="text/javascript" src="controls.js"></script>
 </body>

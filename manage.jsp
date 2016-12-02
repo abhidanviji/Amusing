@@ -93,7 +93,7 @@
 		try {
 			connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
 			statement = connection.createStatement();
-			String sql = "SELECT Friendto from friend where status=1";
+			String sql = "SELECT Friendto from friend where status=1 and friendfrom = '"+(String)session.getAttribute("userId")+"' union SELECT Friendfrom from friend where status=1 and friendto = '"+(String)session.getAttribute("userId")+"'";
 
 			resultSet = statement.executeQuery(sql);
 			while (resultSet.next()) {
