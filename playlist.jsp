@@ -44,11 +44,12 @@
 <header>
     <div class="nav">
       <ul>
-        <li class="overview"><a href="overview.jsp">Overview</a></li>
-        <li class="Likes"><a href="playlist.jsp">Playlists</a></li>
-        <li class="about"><a href="albums.jsp">Albums</a></li>
-        <li class="History"><a href="history.jsp">History</a></li>
-        <li class="Friends"><a href="friends.jsp">Friends</a></li>
+       <li class="overview"><a href="overview.jsp">Overview</a></li>
+		<li class="likes"><a href="likes.jsp">Likes</a></li>
+		<li class="playlist"><a href="playlist.jsp">Playlists</a></li>
+		<li class="about"><a href="albums.jsp">Albums</a></li>
+		<li class="History"><a href="history.jsp">History</a></li>
+		<li class="Friends"><a href="friends.jsp">Friends</a>
       </ul>
     </div>
   </header>
