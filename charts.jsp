@@ -83,6 +83,7 @@ String genre = request.getParameter("genre");
 					<%	
 				}
 			}
+			con.close();
 		%>
 
 	</center>

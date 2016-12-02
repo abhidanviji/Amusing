@@ -60,7 +60,8 @@
       
         <textarea name="lyrics" type="text" class="validate[required,length[6,300]] feedback-input"  placeholder="Lyrics" id="lyrics"><%=rs.getString("lyricstext")%></textarea>
       </p>
-      <%} %>
+      <%} 
+      con.close();%>
         </div>
       </div>
     </form>

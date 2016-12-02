@@ -94,5 +94,6 @@
 
 		</form>
 		</center>
+		<%con.close(); %>
 </body>
 </html>

@@ -92,6 +92,12 @@
 		preparedStmt.setString(1, user);
 		preparedStmt.setString(2,"Likes "+trackname );
 		preparedStmt.execute();
+		
+		String sql2 = " insert into history (user, track) values (?, ?)";
+		PreparedStatement preparedStmt2 = con.prepareStatement(sql2);
+		preparedStmt2.setString(1, (String) session.getAttribute("userId"));
+		preparedStmt2.setString(2, " and liked "+trackname);
+		preparedStmt2.execute();
 		}
 		
 		if(prevdc != dc){
@@ -105,7 +111,15 @@
 		preparedStmt1.setString(1, user);
 		preparedStmt1.setString(2,"Dislikes "+trackname );
 		preparedStmt1.execute();
+		
+		String sql2 = " insert into history (user, track) values (?, ?)";
+		PreparedStatement preparedStmt2 = con.prepareStatement(sql2);
+		preparedStmt2.setString(1, (String) session.getAttribute("userId"));
+		preparedStmt2.setString(2, " and disiked "+trackname);
+		preparedStmt2.execute();
 		}
+		
+		
 		
 		con.close();
 		}catch(Exception e){

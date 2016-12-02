@@ -114,6 +114,7 @@
 			inin.close();
 			inout.flush();
 			inout.close();
+			con.close();
 		} catch (Exception e) {
 			System.out.println("Error" + e);
 		}

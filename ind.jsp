@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Custom audio player</title>
+<title>Amusing audio player</title>
 <link rel="stylesheet" href="main.css" />
 </head>
 <body>
@@ -23,15 +23,24 @@
 			System.out.println(name);
 		int lc = 0;
 		int dc = 0;
+		int count = 0;
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 
+		Statement stat = con.createStatement();
+		ResultSet res = stat.executeQuery("SELECT * FROM history WHERE TIMESTAMPDIFF(SECOND, ts, NOW()) < 5 and track = '"+name+"';");
+		
+		if(!res.next()){
+			
+		
+		
 		String sql1 = " insert into history (user, track) values (?, ?)";
 		PreparedStatement preparedStmt1 = con.prepareStatement(sql1);
 		preparedStmt1.setString(1, (String) session.getAttribute("userId"));
 		preparedStmt1.setString(2, name);
 		preparedStmt1.execute();
-
+		}
+		
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery("select likes,dislikes from tracks where trackname = '" + name + "';");
 		if (rs.next()) {
@@ -111,8 +120,10 @@
 		</form>
 		<br>
 		<form action="report.jsp">
+		<input type="hidden" name="trk" id="trk" value=<%=name%>>
 			<input id="but" type="submit" value="Report" />
 		</form>
+		<%con.close(); %>
 
 	</center>
 	<script type="text/javascript" src="controls.js"></script>

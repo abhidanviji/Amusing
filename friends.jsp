@@ -120,6 +120,6 @@ a.button {
 	opacity: 0.7;
 }
 </style>
-
+<%con.close(); %>
 </body>
 </html>

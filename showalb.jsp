@@ -86,7 +86,8 @@
 			document.getElementById(<%=i+1%>).play();
 		   
 		}); 
-		<%}%>
+		<%}
+		con.close();%>
 		
 		</script>
 </center>

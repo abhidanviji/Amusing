@@ -87,6 +87,7 @@
 		<%
 			}
 			}
+			con.close();
 		%>
 	</center>
 </body>

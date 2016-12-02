@@ -93,7 +93,7 @@
 		} else {
 				response.sendRedirect("nomessage.html");
 			}
-
+			conn.close();
 		}
 
 		catch (Exception e) {

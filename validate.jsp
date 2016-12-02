@@ -65,6 +65,7 @@
 	    
 	    else
 	    	response.sendRedirect("invalidlogin.html");	
+	    conn.close();
 	    	
 	}
 	 

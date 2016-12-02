@@ -82,6 +82,7 @@
 			preparedStmt1.execute();
 			
 		}
+		con.close();
 	}catch(Exception e){
 		
 	}

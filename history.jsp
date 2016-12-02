@@ -71,8 +71,7 @@
 	</header>
 	
 	<center><table width=55% border=1> 
- <%@ page import="java.sql.*"%>
- <%@ page import="javax.sql.*"%>
+
  <%
     try{
    String user = (String)session.getAttribute("userId");

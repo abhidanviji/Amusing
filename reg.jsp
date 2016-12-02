@@ -24,7 +24,7 @@ if(user != null && email != null)
 st.executeUpdate("insert into amlogin values ('"+user+"','"+pwd+"','"+fname+"',	'"+lname+"','"+email+"')"); 
 
 out.println("Registered"); 
-
+con.close();
 
 %>
 <script>

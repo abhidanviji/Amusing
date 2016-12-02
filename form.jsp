@@ -23,6 +23,7 @@
 		if(user != null){
 		int i = st.executeUpdate("insert into friend values ('" + userna + "','" + user + "','" + message + "','" + Status + "')");
 		}
+		con.close();
 	%>
 	<script>
 		alert("Request Sent");

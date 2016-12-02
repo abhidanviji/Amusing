@@ -80,7 +80,7 @@
 			%>
 			
 			<form action=ind.jsp>
-				<input type="hidden" name="page" value="navigationdrop.jsp">
+				<input type="hidden" name="page" value="overview.jsp">
 				<input type="hidden" id="track" name="track" value=<%=rs3.getString(2)%>>
 				<input type="submit" id="tr" name="tr" value=<%=rs3.getString(1)%>>
 			</form>
@@ -89,7 +89,7 @@
 		}
 		
 	}
-	
+    con.close();
 	%>
 </center>
 </body>

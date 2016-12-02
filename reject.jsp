@@ -17,7 +17,9 @@
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement st = con.createStatement();
 		ResultSet rs;
-		int i = st.executeUpdate("Update  friend set Status=2 where Friendfrom='" + userid + "';");
+	
+	int i = st.executeUpdate("Update  friend set Status=2 where Friendfrom='" + userid + "';");
+	con.close();
 	%>
 	<script>
 		alert("updated successfully");

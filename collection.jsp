@@ -78,6 +78,6 @@
 
 	</div>
 	</header>
-
+<%con.close(); %>
 </body>
 </html>
