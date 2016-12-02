@@ -88,7 +88,7 @@
 			%>
 
 			<input type="checkbox" name="trackname" value=<%=t%>><%=t%><br>
-			<input type="submit" value="Create Album">
+			
 		</form>
 
 		<%
@@ -96,6 +96,7 @@
 			Statement stmt1 = con.createStatement();
 			ResultSet rset1 = stmt1.executeQuery("select aname from album where username ='" + user + "';");
 		%>
+		<input type="submit" value="Create Album">
 		<form action="remalb.jsp">
 			<select name="delalb">
 
@@ -115,6 +116,7 @@
 		%>
 
 	</center>
+
 
 </body>
 </html>

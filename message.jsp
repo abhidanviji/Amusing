@@ -4,9 +4,60 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title></title>
+<title>Amusing</title>
+<link rel="stylesheet" type="text/css" href="navigationdrop.css">
+<link rel="stylesheet" type="text/css" href="collection.css">
 </head>
 <body>
+<div class="wrapper">
+
+		<div class="top"></div>
+
+		<ul class="navigation">
+			<li><a href="navigationdrop.jsp"> <%=(String) session.getAttribute("userId")%>'s
+					AMUSING
+			</a></li>
+			<li><a href="home.jsp" title="Home"> Home</a></li>
+			<li><a href="collection.jsp" title="Collection"> Collection</a></li>
+			<li><a href="fileupload.html" title="Upload"> Upload</a></li>
+
+			<li><a href="###" title="Lyrics"> Lyrics</a>
+				<ul>
+					<li><a href="lyrics.html" title="Upload"> Upload</a></li>
+					<li><a href="lyricreceiver.jsp" title="View"> View</a></li>
+				</ul>
+			<li>
+			<li><a href="###" title="Message">Message</a>
+				<ul>
+					<li><a href="messagesublime.jsp" title="Send">Send</a></li>
+					<li><a href="receive.jsp" title="View">View</a></li>
+				</ul></li>
+			<li><a href="index.html" title="Logout">Logout</a></li>
+			<form action="searchresult.jsp">
+				<li><a><input id="search-bar" name="search" type="text"
+						placeholder="Search to find tracks"> <input
+						id="search-button" name="search_submit" type="submit"
+						value="Search"></a></li>
+			</form>
+			<div class="clear"></div>
+		</ul>
+	</div>
+
+	<header>
+
+	<div class="nav">
+		<ul>
+			<li class="overview"><a href="overview.jsp">Overview</a></li>
+			<li class="likes"><a href="likes.jsp">Likes</a></li>
+			<li class="playlist"><a href="playlist.jsp">Playlists</a></li>
+			<li class="about"><a href="albums.jsp">Albums</a></li>
+			<li class="History"><a href="history.jsp">History</a></li>
+			<li class="Friends"><a href="friends.jsp">Friends</a>
+		</ul>
+
+	</div>
+	</header>
+	<center>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%@ page import="java.util.*"%>
@@ -28,16 +79,15 @@
 	%><br>
 	<textarea rows="4" cols="50"><%=rs.getString(2)%></textarea>
 	<br>
-	<br>
-	<br>
+	
 	<form action="update.jsp" method="post">
 	<input type = "hidden" name="userfrom" value = <%=userfrom%>>
-		<input type=submit method=post name=submit value=Confirm>
+		<input type=submit method=post name="tr" id = "tr" value=Confirm>
 	</form>
-		<br>
+		
 	<form action="reject.jsp" method="post">
 	<input type = "hidden" name="userfrom" value = <%=userfrom%>>
-		<input type=submit method=post name=submit value=Delete>
+		<input type=submit method=post name="tr" id = "tr" value=Delete>
 	</form>
 	<%
 		} else {
@@ -51,5 +101,6 @@
 		}
 		
 		%>
+		</center>
 	</body>
 </html>

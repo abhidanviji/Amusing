@@ -68,7 +68,8 @@
 
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select userid from amlogin where userid <> '" + user
-					+ "' and userid not in	(select Friendfrom from friend where status = 1 and Friendto = '" + user
+					+ "' and userid not in	(select Friendto from friend where status = 0 and Friendfrom = '" + user
+					+ "') and userid not in	(select Friendfrom from friend where status = 1 and Friendto = '" + user
 					+ "') and userid not in (select Friendto from friend where status = 1 and Friendfrom = '" + user
 					+ "')");
 		%>

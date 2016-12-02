@@ -8,62 +8,85 @@
 <link rel="stylesheet" type="text/css" href="navigationdrop.css">
 <link rel="stylesheet" type="text/css" href="collection.css">
 </head>
-</body>
-<div class="wrapper">
+<body>
+	<%@ page import="java.sql.*"%>
+	<%@ page import="javax.sql.*"%>
+	<%
+		String fname = "SCA", lname = "user", email = "abc.com", uid = "user";
+		Class.forName("com.mysql.jdbc.Driver");
+		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 
-	<div class="top"></div>
+		Statement st2 = con.createStatement();
+		ResultSet rs2 = st2.executeQuery(
+				"select status from friend where status = 0 and friendto = '" + (String) session.getAttribute("userId") + "';");
+	%>
+	<div class="wrapper">
 
-	<ul class="navigation">
-		<li><a href="navigationdrop.jsp"> <%=(String)session.getAttribute("userId")%>'s AMUSING</a></li>
-		<li><a href="home.jsp" title="Home"> Home</a></li>
-		<li><a href="collection.jsp" title="Collection"> Collection</a></li>
-		<li><a href="fileupload.html" title="Upload"> Upload</a></li>
+		<div class="top"></div>
 
-		<li><a href="###" title="Lyrics"> Lyrics</a>
-			<ul>
-				<li><a href="lyrics.html" title="Upload"> Upload</a></li>
-				<li><a href="lyricreceiver.jsp" title="View"> View</a></li>
-			</ul>
-		<li>
-		<li><a href="###" title="Message">Message</a>
-			<ul>
-				<li><a href="messagesublime.jsp" title="Send">Send</a></li>
-				<li><a href="receive.jsp" title="View">View</a></li>
-			</ul></li>
-		<li><a href="index.html" title="Logout">Logout</a></li>
-		<form action="searchresult.jsp">
-			<li><a><input id="search-bar" name="search" type="text"
-					placeholder="Search to find tracks"> <input
-					id="search-button" name="search_submit" type="submit"
-					value="Search"></a></li>
-		</form>
-		<div class="clear"></div>
-	</ul>
-</div>
+		<ul class="navigation">
+			<li><a href="navigationdrop.jsp"> <%=(String) session.getAttribute("userId")%>'s
+					AMUSING
+			</a></li>
+			<li><a href="home.jsp" title="Home"> Home</a></li>
+			<li><a href="collection.jsp" title="Collection"> Collection</a></li>
+			<li><a href="fileupload.html" title="Upload"> Upload</a></li>
 
-<header>
+			<li><a href="###" title="Lyrics"> Lyrics</a>
+				<ul>
+					<li><a href="lyrics.html" title="Upload"> Upload</a></li>
+					<li><a href="lyricreceiver.jsp" title="View"> View</a></li>
+				</ul>
+			<li>
+			<li><a href="###" title="Message">Message</a>
+				<ul>
+					<li><a href="messagesublime.jsp" title="Send">Send</a></li>
+					<li><a href="receive.jsp" title="View">View</a></li>
+				</ul></li>
+			<li><a href="index.html" title="Logout">Logout</a></li>
+			<form action="searchresult.jsp">
+				<li><a><input id="search-bar" name="search" type="text"
+						placeholder="Search to find tracks"> <input
+						id="search-button" name="search_submit" type="submit"
+						value="Search"></a></li>
+			</form>
+			<div class="clear"></div>
+		</ul>
+	</div>
 
-<div class="nav">
+	<header>
+
+	<div class="nav">
 		<ul>
 			<li class="overview"><a href="overview.jsp">Overview</a></li>
-		<li class="likes"><a href="likes.jsp">Likes</a></li>
-		<li class="playlist"><a href="playlist.jsp">Playlists</a></li>
-		<li class="about"><a href="albums.jsp">Albums</a></li>
-		<li class="History"><a href="history.jsp">History</a></li>
-		<li class="Friends"><a href="friends.jsp">Friends</a>
-
+			<li class="likes"><a href="likes.jsp">Likes</a></li>
+			<li class="playlist"><a href="playlist.jsp">Playlists</a></li>
+			<li class="about"><a href="albums.jsp">Albums</a></li>
+			<li class="History"><a href="history.jsp">History</a></li>
+			<li class="Friends"><a href="friends.jsp">Friends</a>
 		</ul>
-	
-</div>
-</header>
 
-<center>
-	<a href="friendreq.jsp" class="button" id="frndreq">Send Request</a> 
-	<a href="message.jsp" class="button" id="manfrnd">Manage Friends</a> 
-	<a href="manage.jsp" class="button" id="frndlist">Friend List</a>
-</center>
+	</div>
+	</header>
 
-<style>
+	<center>
+		<a href="friendreq.jsp" class="button" id="frndreq">Send Request</a>
+		<%
+			if (rs2.next()) {
+		%>
+		<a href="message.jsp" class="button" id="manfrnd"><font
+			color="red">Manage Friends</a>
+		<%
+			} else {
+		%>
+		<a href="message.jsp" class="button" id="manfrnd">Manage Friends</a>
+		<%
+			}
+		%>
+		<a href="manage.jsp" class="button" id="frndlist">Friend List</a>
+	</center>
+
+	<style>
 .button {
 	display: inline-block;
 	vertical-align: middle;
@@ -96,7 +119,6 @@ a.button {
 	box-shadow: none;
 	opacity: 0.7;
 }
-
 </style>
 
 </body>
