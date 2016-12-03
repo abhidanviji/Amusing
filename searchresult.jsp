@@ -51,7 +51,7 @@
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement st = con.createStatement();
 		if(!search.equals("Search to find tracks")){
-		ResultSet rs = st.executeQuery("select song,trackname from usertrack where trackname LIKE  '%"+search+"%';");
+		ResultSet rs = st.executeQuery("select song,trackname from usertrack where song LIKE  '%"+search+"%';");
 		while (rs.next()) {	
 		%>
 	

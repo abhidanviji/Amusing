@@ -98,7 +98,6 @@
 	</div>
 	
 	
-	<table width=55% border=1> </table></center>
 	<div class = "ogrey">
 	<center><h3>Playlists: </h3>
 	

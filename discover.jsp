@@ -55,11 +55,11 @@
 		<h3>You may like these tracks too! Check them!!</h3>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
-		<%
+		<%try{
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 			int count = 1;
-			String genrelist[] = new String[4];
+			String genrelist[] = new String[50];
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(
 					"select distinct genre from tracks,usertrack where tracks.trackname = usertrack.trackname and username = '"
@@ -88,6 +88,10 @@
 			}
 			}
 			con.close();
+		}catch(Exception e){
+			
+		}
+			
 		%>
 	</center>
 </body>
