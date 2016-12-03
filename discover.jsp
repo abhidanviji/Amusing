@@ -72,7 +72,7 @@
 			for (int i = 1; i <= count; i++) {
 				Statement st1 = con.createStatement();
 				ResultSet rs1 = st1.executeQuery(
-						"select song,tracks.trackname,genre from tracks,usertrack where tracks.trackname = usertrack.trackname and  genre='"
+						"select distinct song,tracks.trackname,genre from tracks,usertrack where tracks.trackname = usertrack.trackname and  genre='"
 								+ genrelist[i] + "' and username !='" + (String) session.getAttribute("userId") + "';");
 
 				while (rs1.next()) {
