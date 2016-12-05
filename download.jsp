@@ -110,7 +110,7 @@
 			while ((length = inin.read(buffer)) > 0) {
 				inout.write(buffer, 0, length);
 			}
-			out.println("File downloaded successfully to " + home + "\\Downloads\\Amuse");
+			%><font color = "white"><%out.println("File downloaded successfully to " + home + "\\Downloads\\Amuse");
 			inin.close();
 			inout.flush();
 			inout.close();

@@ -48,7 +48,7 @@
       <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
-		
+		try{
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement statement = con.createStatement();
@@ -61,7 +61,11 @@
         <textarea name="lyrics" type="text" class="validate[required,length[6,300]] feedback-input"  placeholder="Lyrics" id="lyrics"><%=rs.getString("lyricstext")%></textarea>
       </p>
       <%} 
-      con.close();%>
+      con.close();
+		}catch(Exception e){
+			
+		}
+      %>
         </div>
       </div>
     </form>

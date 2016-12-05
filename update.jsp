@@ -9,7 +9,7 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		String userid = (String) session.getAttribute("userId");
 		String userfrom = request.getParameter("userfrom");
 		System.out.println("User ID - "+userid);
@@ -29,6 +29,9 @@
 		preparedStmt2.execute();
 		}
 		con.close();
+	}catch(Exception e){
+		
+	}
 	%>
 	<script>
 		alert("You are now a friend!");

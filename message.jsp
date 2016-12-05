@@ -58,6 +58,7 @@
 	</div>
 	</header>
 	<center>
+	<div class = "ogrey">
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%@ page import="java.util.*"%>
@@ -101,6 +102,7 @@
 		}
 		
 		%>
+		</div>
 		</center>
 	</body>
 </html>

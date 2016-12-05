@@ -11,7 +11,7 @@
 
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		String name = request.getParameter("track");
 		System.out.println(name);
         String pagecall = request.getParameter("page");
@@ -28,7 +28,7 @@
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 
 		Statement stat = con.createStatement();
-		ResultSet res = stat.executeQuery("SELECT * FROM history WHERE TIMESTAMPDIFF(SECOND, ts, NOW()) < 5 and track = '"+name+"';");
+		ResultSet res = stat.executeQuery("SELECT * FROM history WHERE TIMESTAMPDIFF(SECOND, ts, NOW()) < 10 and track = '"+name+"';");
 		
 		if(!res.next()){
 			
@@ -123,7 +123,10 @@
 		<input type="hidden" name="trk" id="trk" value=<%=name%>>
 			<input id="but" type="submit" value="Report" />
 		</form>
-		<%con.close(); %>
+		<%con.close(); 
+		}catch(Exception e){
+		}
+		%>
 
 	<br><br><br><br><br><br>
 	<script type="text/javascript" src="controls.js"></script>

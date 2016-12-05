@@ -59,9 +59,10 @@
 	</div>
 	</header>
 	<center>
+	<div class = "ogrey">
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
-		<%
+		<%try{
 			String user = (String) session.getAttribute("userId");
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
@@ -93,7 +94,12 @@
 				value="Send Request">
 
 		</form>
+		</div>
 		</center>
-		<%con.close(); %>
+		<%con.close(); 
+		}catch(Exception e){
+			
+		}
+		%>
 </body>
 </html>

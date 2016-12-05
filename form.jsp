@@ -9,7 +9,7 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		String user = request.getParameter("username");
 		session.setAttribute("username", user);
 		String userna = (String) session.getAttribute("userId");
@@ -24,6 +24,9 @@
 		int i = st.executeUpdate("insert into friend values ('" + userna + "','" + user + "','" + message + "','" + Status + "')");
 		}
 		con.close();
+	}catch(Exception e){
+		
+	}
 	%>
 	<script>
 		alert("Request Sent");

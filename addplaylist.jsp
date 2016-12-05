@@ -55,6 +55,7 @@
   </header>
   
   <center><h1>Your favourites!!</h1>
+  <div class = "ogrey">
   <h2>Added Successfully!!</h>
   <form action = addplaylist.jsp>
   <%@ page import="java.sql.*"%>
@@ -105,7 +106,9 @@
 		}
 		%>
 		<input type = "submit" id="addsong" name = "addsong" value = "Add To Playlist">
-		</form></center>
+		</form>
+		</div>
+		</center>
 
 </body>
 </html>

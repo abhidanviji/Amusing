@@ -12,6 +12,7 @@
 <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
+	try{
 	String lyricname = request.getParameter("lyricname");
 	String lyrics = request.getParameter("lyrics");
 	
@@ -33,8 +34,18 @@
 		preparedStmt.setString(3, lyrics);
 		
 		preparedStmt.execute();
+		
+		String sql1 = " insert into notifications (username, noti) values (?, ?)";
+		PreparedStatement preparedStmt1 = con.prepareStatement(sql1);
+		preparedStmt1.setString(1, (String)session.getAttribute("userId"));
+		preparedStmt1.setString(2," Uploaded "+lyricname+" lyrics");
+		preparedStmt1.execute();
+		
 		con.close();
 		 }
+	}catch(Exception e){
+		
+	}
 	%>
 	<div class="wrapper">
    

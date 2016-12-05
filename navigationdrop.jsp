@@ -26,6 +26,8 @@
 	Statement st2 = con.createStatement();
 	ResultSet rs2 = st2.executeQuery("select status from friend where status = 0 and friendto = '" + (String) session.getAttribute("userId") + "';");
 	
+	Statement st3 = con.createStatement();
+	ResultSet rs3 = st3.executeQuery("select status from message where status = 0 and to_user = '" + (String) session.getAttribute("userId") + "';");
 	
 %>
 <div class="wrapper">
@@ -59,11 +61,23 @@
 				<li><a href="lyricreceiver.jsp" title="View"> View</a></li>
 			</ul>
 		<li>
-		<li><a href="###" title="Message">Message</a>
+		<%
+	if(rs3.next()){
+	%>
+		<li><a href="###" title="Message" >Message</a>
 			<ul>
 				<li><a href="messagesublime.jsp" title="Send">Send</a></li>
+								
+				<li><a href="receive.jsp" title="View"><font color="red">View</a></li>
+			</ul></li>
+			<%}else{ %>
+			<li><a href="###" title="Message">Message</a>
+			<ul>
+				<li><a href="messagesublime.jsp" title="Send">Send</a></li>
+								
 				<li><a href="receive.jsp" title="View">View</a></li>
 			</ul></li>
+			<%} %>
 		<li><a href="index.html" title="Logout">Logout</a></li>
 		<form action="searchresult.jsp">
 			<li><a><input id="search-bar" name="search" type="text"
@@ -78,7 +92,7 @@
 <center>
 	<div id="track">
 
-		<%
+		<%try{
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select song,trackname from usertrack where username = '"+(String) session.getAttribute("userId")+"';");
 			while (rs.next()) {
@@ -93,6 +107,9 @@
 		<%
 			}
 			con.close();
+		}catch(Exception e){
+			
+		}
 		%>
 
 	</div>

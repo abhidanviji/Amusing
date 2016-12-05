@@ -11,7 +11,7 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		String fname = "SCA", lname = "user", email = "abc.com", uid = "user";
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
@@ -66,6 +66,7 @@
 	</div>
 	</header>
 	<center>
+	<div class = "ogrey">
 	<%
 	Statement st2 = con.createStatement();
 	ResultSet rs2 = st2.executeQuery("select noti from notifications where noti LIKE 'Like%' and username = '"+(String)session.getAttribute("userId")+"';");
@@ -80,7 +81,7 @@
 			%>
 			
 			<form action=ind.jsp>
-				<input type="hidden" name="page" value="overview.jsp">
+				<input type="hidden" name="page" value="likes.jsp">
 				<input type="hidden" id="track" name="track" value=<%=rs3.getString(2)%>>
 				<input type="submit" id="tr" name="tr" value=<%=rs3.getString(1)%>>
 			</form>
@@ -90,7 +91,11 @@
 		
 	}
     con.close();
+	}catch(Exception e){
+		
+	}
 	%>
+	</div>
 </center>
 </body>
 </html>

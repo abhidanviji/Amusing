@@ -54,6 +54,7 @@
   </header>
   
   <center>
+  <div class = "ogrey">
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -80,13 +81,13 @@
 <h2 align="center">
 	<font><strong>List of Friends</strong></font>
 </h2>
-<table align="center" cellpadding="5" cellspacing="5" border="1" width=15% >
+<table align="center" cellpadding="5" cellspacing="5" border="1" width=35% >
 	<tr>
 
 	</tr>
 	<tr >
 
-		<td align = "center"><font color="black"><b>Friends</b></td>
+		<td align = "center"><font color="white"><b>Friends</b></td>
 
 	</tr>
 	<%
@@ -100,7 +101,7 @@
 	%>
 	<tr align = "center" >
 
-		<td><font color="black"><%=resultSet.getString("Friendto")%></td>
+		<td><font color="white"><%=resultSet.getString("Friendto")%></td>
 
 
 	</tr>
@@ -113,6 +114,7 @@ connection.close();
 		}
 	%>
 </table>
+</div>
 </center>
 
 </body>

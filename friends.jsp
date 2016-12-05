@@ -11,7 +11,7 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		String fname = "SCA", lname = "user", email = "abc.com", uid = "user";
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
@@ -120,6 +120,10 @@ a.button {
 	opacity: 0.7;
 }
 </style>
-<%con.close(); %>
+<%con.close(); 
+	}catch(Exception e){
+		
+	}
+%>
 </body>
 </html>

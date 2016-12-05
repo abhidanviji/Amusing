@@ -54,12 +54,15 @@
     </div>
   </header>
   
-  <center><h1>Your favourites!!</h1>
-  <h2>Removed Successfully!!</h>
+  <center>
+  <div class = "ogrey">
+  <h1>Your favourites!!</h1>
+  <h2>Removed Successfully!!</h2>
   <form action = removeplaylist.jsp>
   <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
+	try{
 	String user = (String)session.getAttribute("userId");
 	String trackname = request.getParameter("trackname1");
 		Class.forName("com.mysql.jdbc.Driver");
@@ -92,9 +95,14 @@
 				
 		<%	
 		con.close();
+	}catch(Exception e){
+		
+	}
 		%>
 		<input type = "submit" id="delsong" name = "delsong" value = "Remove from Playlist">
-		</form></center>
+		</form>
+		</div>
+		</center>
 
 </body>
 </html>

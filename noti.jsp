@@ -53,7 +53,9 @@
     </div>
   </header>
  
- <center><table width=55% border=1> 
+ <center>
+ <div class = "ogrey">
+ <table align="center" width=55% border=1> 
  <%@ page import="java.sql.*"%>
  <%@ page import="javax.sql.*"%>
  <%
@@ -79,6 +81,8 @@ catch(Exception e){
 } 
 
 %>
-</table></center>
+</table>
+</div>
+</center>
 </body>
 </html>

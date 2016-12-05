@@ -52,6 +52,7 @@
 	</div>
 	</header>
 	<center>
+	<div class = "ogrey">
 		<h3>You may like these tracks too! Check them!!</h3>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
@@ -72,7 +73,7 @@
 			for (int i = 1; i <= count; i++) {
 				Statement st1 = con.createStatement();
 				ResultSet rs1 = st1.executeQuery(
-						"select distinct song,tracks.trackname,genre from tracks,usertrack where tracks.trackname = usertrack.trackname and  genre='"
+						"select distinct song,tracks.trackname,genre from tracks,usertrack where tracks.trackname = usertrack.trackname and genre != 'Other' and  genre='"
 								+ genrelist[i] + "' and username !='" + (String) session.getAttribute("userId") + "';");
 
 				while (rs1.next()) {
@@ -86,13 +87,16 @@
 		</form>
 		<%
 			}
+			
+				con.close();
 			}
-			con.close();
+			
 		}catch(Exception e){
 			
 		}
 			
 		%>
+		</div>
 	</center>
 </body>
 </html>

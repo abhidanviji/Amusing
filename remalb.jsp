@@ -53,11 +53,12 @@
 	</div>
 	</header>
 	<center>
-		<h1>Deleted Album Successfully!!</h1>
+	<div class = "ogrey">
+		<h3>Deleted Album Successfully!!</h3>
 		<br>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
-		<%
+		<%try{
 			String user = (String) session.getAttribute("userId");
 		String aname = request.getParameter("delalb");
 			Class.forName("com.mysql.jdbc.Driver");
@@ -70,7 +71,11 @@
 			preparedStmt.execute();
 		
 				con.close();
+		}catch(Exception e){
+			
+		}
 			%>
+			</div>
 	</center>
 
 </body>

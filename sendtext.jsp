@@ -44,7 +44,7 @@
 <center><h3>Message Sent!!</h3></center>
  <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 	String from_user = request.getParameter("from");
 	String to_user = request.getParameter("to");
 	String text = request.getParameter("message");
@@ -59,15 +59,19 @@
 			 }
 		 }
 		 if(count == 0){
-		String query = " insert into message (from_user, to_user, text) values (?, ?, ?)";
+		String query = " insert into message (from_user, to_user, text,status) values (?, ?, ?,?)";
 		PreparedStatement preparedStmt = con.prepareStatement(query);
 		preparedStmt.setString(1, from_user);
 		preparedStmt.setString(2, to_user);
 		preparedStmt.setString(3, text);
+		preparedStmt.setInt(4, 0);
 		
 		preparedStmt.execute();
 		con.close();
-		 }	 
+		 }	
+	}catch(Exception e){
+		
+	}
 	%>
 	<div id="form-main">
   <div id="form-div">

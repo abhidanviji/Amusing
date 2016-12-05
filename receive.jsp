@@ -46,11 +46,14 @@
   <div id="form-div">
     <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 		Statement statement = con.createStatement();
+		int i = statement.executeUpdate("Update  message set status=1 where to_user = '"+(String)session.getAttribute("userId")+"';");
+	
+		
 		ResultSet rs = statement.executeQuery("select to_user,from_user,text from message where to_user = '"+(String)session.getAttribute("userId")+"' or from_user = '"+(String)session.getAttribute("userId")+"';");
 		 while(rs.next()){%>
       
@@ -63,6 +66,9 @@
       <%
 		 }
       con.close();
+	}catch(Exception e){
+		
+	}
   	%>     
       
         <div class="ease">	

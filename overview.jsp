@@ -129,8 +129,7 @@
 		<%}%>
 		
 		</script>
-	
-	<table width=55% border=1> </table></center>
+	</center>
 	</div>
 	<div class = "ogrey">
 	<center><h3>Albums: </h3>
@@ -152,8 +151,7 @@
 			}
 		%>
 		
-	
-	<table width=55% border=1> </table></center>
+	</center>
 	</div>
 	<div class = "ogrey">
 	<center><h3>History: </h3>
@@ -179,7 +177,6 @@ catch(Exception e){
 
 %>
 </table></center><br>
-	<table width=55% border=1> </table></center>
 	
 	</div>
 	<div class = "ogrey">

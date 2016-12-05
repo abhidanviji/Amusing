@@ -55,11 +55,12 @@
 	</div>
 	</header>
 	<center>
+	<div class = "ogrey">
 		<h1>Create your own albums here!!</h1>
 		<br>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
-		<%
+		<%try{
 			String user = (String) session.getAttribute("userId");
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
@@ -117,8 +118,11 @@
 
 		<%
 			con.close();
+		}catch(Exception e){
+			
+		}
 		%>
-
+</div>
 	</center>
 
 

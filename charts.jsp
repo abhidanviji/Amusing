@@ -53,6 +53,7 @@
 	</header>
 
 	<center>
+	<div class = "ogrey">
 		<form action="charts.jsp">
 			Select Genre:<select name="genre" id="genre">
 				<option value="Fast Beat">Fast Beat</option>
@@ -63,7 +64,7 @@
 		</form>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
-		<%
+		<%try{
 String genre = request.getParameter("genre");	
 		if(genre != null)
 		out.println("\n\nGenre - "+genre);
@@ -71,7 +72,7 @@ String genre = request.getParameter("genre");
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 			if(genre != null){
 				Statement stmt = con.createStatement();
-				ResultSet rset = stmt.executeQuery("select song,tracks.trackname from tracks,usertrack where genre = '"+genre+"' and tracks.trackname = usertrack.trackname and username = '"+(String)session.getAttribute("userId")+"';");
+				ResultSet rset = stmt.executeQuery("select distinct song,tracks.trackname from tracks,usertrack where genre = '"+genre+"' and tracks.trackname = usertrack.trackname ;");
 				while(rset.next()){
 					%>
 					<center><form action = ind.jsp>
@@ -84,8 +85,11 @@ String genre = request.getParameter("genre");
 				}
 			}
 			con.close();
+		}catch(Exception e){
+			
+		}
 		%>
-
+</div>
 	</center>
 
 </body>

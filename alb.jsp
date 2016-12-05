@@ -52,7 +52,9 @@
 		</ul>
 	</div>
 	</header>
-	<center><h3>Album Successfully Created</h3></center>
+	<center>
+	<div class = "ogrey">
+	<h3>Album Successfully Created</h3></center>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
@@ -88,6 +90,7 @@
 	}
 	
 	%>
-
+</div>
+</center>
 </body>
 </html>

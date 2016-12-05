@@ -11,7 +11,7 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		String fname = "SCA", lname = "user", email = "abc.com", uid = "user";
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
@@ -70,10 +70,12 @@
 	</div>
 	</header>
 	
-	<center><table width=55% border=1> 
+	<center>
+	<div class = "ogrey">
+	<table align="center" border=1> 
 
  <%
-    try{
+    
    String user = (String)session.getAttribute("userId");
     Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","oracle");    
@@ -95,7 +97,9 @@ catch(Exception e){
 } 
 
 %>
-</table></center>
+</table>
+</div>
+</center>
 
 </body>
 </html>

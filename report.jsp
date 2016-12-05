@@ -34,7 +34,7 @@
 </body>
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
-<%
+<%try{
 	String fname = "SCA", lname = "user", email = "abc.com", uid = "user";
 	String trk = request.getParameter("trk");
 	Class.forName("com.mysql.jdbc.Driver");
@@ -80,6 +80,7 @@
 		<li><a href="collection.jsp" title="Collection">Collection</a></li>
 		<%
 			}
+		con.close();
 		%>
 		<li><a href="fileupload.html" title="Upload"> Upload</a></li>
 
@@ -111,13 +112,11 @@
 	<form action="rep.jsp">
 		<input type="checkbox" name="rep" value="Spam"> Spam <br>
 		<input type="checkbox" name="rep" value="Impersonation">
-		Impersonation<br> <input type="checkbox" name="rep"
-			value="Abuse"> Abuse<br> <input type="checkbox"
-			name="rep" value="TrademarkInfringement">
-		Trademark infringement<br>  Please specify if other: <input
-			type="text" name="other"> 
-			<input type="hidden" name="track"
-			value=<%=trk %>>
+		Impersonation<br> <input type="checkbox" name="rep" value="Abuse">
+		Abuse<br> <input type="checkbox" name="rep"
+			value="TrademarkInfringement"> Trademark infringement<br>
+		Please specify if other: <input type="text" name="other"> <input
+			type="hidden" name="track" value=<%=trk %>>
 		<p>
 			<button class="w3-btn w3-round-large" input type="submit"
 				onclick="myFunction()">SUBMIT</button>
@@ -140,6 +139,9 @@
 		does not break the rules.</p>
 </div>
 
-
+<%
+			}catch(Exception e){
+			}
+			%>
 </body>
 </html>

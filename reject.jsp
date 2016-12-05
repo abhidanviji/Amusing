@@ -9,7 +9,7 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	<%
+	<%try{
 		String userid = (String) session.getAttribute("userid");
 		String userfrom = request.getParameter("userfrom");
 
@@ -20,6 +20,9 @@
 	
 	int i = st.executeUpdate("Update  friend set Status=2 where Friendfrom='" + userid + "';");
 	con.close();
+	}catch(Exception e){
+		
+	}
 	%>
 	<script>
 		alert("updated successfully");
