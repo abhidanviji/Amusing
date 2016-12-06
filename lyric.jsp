@@ -79,7 +79,7 @@
     <div class="clear"></div>
   </ul>
 </div>
-	<center><h3>Lyric Uploaded Successfully!</h3></center>
+	<center><h3><font color="white">Lyric Uploaded Successfully!</h3></center>
 	<div id="form-main">
   <div id="form-div">
     <form class="form" id="form1" action="lyric.jsp">

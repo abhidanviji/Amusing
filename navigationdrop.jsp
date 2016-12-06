@@ -64,7 +64,7 @@
 		<%
 	if(rs3.next()){
 	%>
-		<li><a href="###" title="Message" >Message</a>
+		<li><a href="receive.jsp" title="Message" ><font color="red">Message</a>
 			<ul>
 				<li><a href="messagesublime.jsp" title="Send">Send</a></li>
 								

@@ -41,7 +41,7 @@
     <div class="clear"></div>
   </ul>
 </div>
-<center><h3>Message Sent!!</h3></center>
+<center><h3><font color="white">Message Sent!!</h3></center>
  <%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%try{
