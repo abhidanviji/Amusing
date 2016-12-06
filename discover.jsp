@@ -61,6 +61,7 @@
 			java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 			int count = 1;
 			String genrelist[] = new String[50];
+			
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(
 					"select distinct genre from tracks,usertrack where tracks.trackname = usertrack.trackname and username = '"
@@ -69,13 +70,24 @@
 				genrelist[count] = rs.getString(1);
 				count++;
 			}
-
-			for (int i = 1; i <= count; i++) {
+			System.out.println("count - "+count);
+			for (int i = 1; i < count; i++) {
+				
+				Statement st2 = con.createStatement();
+				ResultSet rs2 = st2.executeQuery(
+						"select distinct song,tracks.trackname,genre from tracks,usertrack where tracks.trackname = usertrack.trackname and genre != 'Other' and  genre='"
+								+ genrelist[i] + "' and username !='" + (String) session.getAttribute("userId") + "';");
+				if(!rs2.next()){
+					%>
+					<h4>No suggestion for <%=genrelist[i]%> genre!</h4>
+					<%
+				}
+				
 				Statement st1 = con.createStatement();
 				ResultSet rs1 = st1.executeQuery(
 						"select distinct song,tracks.trackname,genre from tracks,usertrack where tracks.trackname = usertrack.trackname and genre != 'Other' and  genre='"
 								+ genrelist[i] + "' and username !='" + (String) session.getAttribute("userId") + "';");
-
+			
 				while (rs1.next()) {
 		%>
 		<form action=ind.jsp>
@@ -88,11 +100,11 @@
 		<%
 			}
 			
-				con.close();
+				
 			}
-			
+			con.close();
 		}catch(Exception e){
-			
+			System.out.println("Error in discover - "+e);
 		}
 			
 		%>

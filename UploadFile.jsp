@@ -93,7 +93,7 @@
 						}
 					}
 
-					out.println("File Uploaded - " + name + "<br>");
+					%><font color = "white"><%out.println("File Uploaded - " + name + "<br>");
 					out.println("</body>");
 					out.println("</html>");
 
