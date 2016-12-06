@@ -87,6 +87,13 @@
 		ps.setInt(1, lc);
 		ps.execute();
 		
+		String sq = " insert into ldstatus (username, track,ld) values (?, ?,?)";
+		PreparedStatement preparedSt = con.prepareStatement(sq);
+		preparedSt.setString(1, (String) session.getAttribute("userId"));
+		preparedSt.setString(2, trackname);
+		preparedSt.setInt(3, 1);
+		preparedSt.execute();
+		
 		String sql = " insert into notifications (username, noti) values (?, ?)";
 		PreparedStatement preparedStmt = con.prepareStatement(sql);
 		preparedStmt.setString(1, user);
@@ -105,6 +112,13 @@
 		PreparedStatement ps1 = con.prepareStatement(query1);
 		ps1.setInt(1, dc);
 		ps1.execute();
+		
+		String sq = " insert into ldstatus (username, track,ld) values (?, ?,?)";
+		PreparedStatement preparedSt = con.prepareStatement(sq);
+		preparedSt.setString(1, (String) session.getAttribute("userId"));
+		preparedSt.setString(2, trackname);
+		preparedSt.setInt(3, 0);
+		preparedSt.execute();
 		
 		String sql1 = " insert into notifications (username, noti) values (?, ?)";
 		PreparedStatement preparedStmt1 = con.prepareStatement(sql1);

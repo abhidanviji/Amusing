@@ -24,6 +24,7 @@
 		int lc = 0;
 		int dc = 0;
 		int count = 0;
+		int lcol = 0,dcol = 0;
 		Class.forName("com.mysql.jdbc.Driver");
 		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "oracle");
 
@@ -46,6 +47,15 @@
 		if (rs.next()) {
 			lc = rs.getInt("likes");
 			dc = rs.getInt("dislikes");
+		}
+		
+		ResultSet set = st.executeQuery("select ld from ldstatus where track = '" + name + "' and username = '" + (String)session.getAttribute("userId") + "';");
+		if (set.next()) {
+			if(set.getInt(1) == 1){
+				lcol = 1;
+			}else{
+				dcol = 1;
+			}
 		}
 	%>
 
@@ -75,14 +85,44 @@
 		<div id="extras">
 			<br>
 			<form action=<%=pagecall%> method=post>
-				&nbsp&nbsp&nbsp&nbsp <input type="text" id="likeButton" name="count"
+				&nbsp&nbsp&nbsp&nbsp
+				<%if(lcol == 1){ %>
+				<input type="text" id="likeButton" name="count"
+					style="color: transparent; text-shadow: 0 0 0; background-image: url(../images/lik.png);"
+					 /> 
+					 <input class="count" id="likecount"
+					type="text" name="likecount" value=<%=lc%>>
+					
+					
+				<%}else{ %>
+				<input type="text" id="likeButton" name="count"
 					style="color: transparent; text-shadow: 0 0 0;"
-					onclick="myLikeFunction();" /> <input class="count" id="likecount"
-					type="text" name="likecount" value=<%=lc%>> &nbsp&nbsp&nbsp
+					onclick="myLikeFunction();" /> 
+					<input class="count" id="likecount"
+					type="text" name="likecount" value=<%=lc%>>
+					
+					<%} %>
+					
+				
+				&nbsp&nbsp&nbsp 
+				<%if(dcol == 1) {%>
+				
+				
 				<input type="text" id="dislikeButton" name="count"
+					style="color: transparent; text-shadow: 0 0 0; background-image: url(../images/dis.png);"
+					onclick="myDislikeFunction();" /> <input class="count"
+					id="dislikecount" type="text" name="dislikecount" value=<%=dc%>>
+				
+				<%}else{ %>
+				
+					
+					<input type="text" id="dislikeButton" name="count"
 					style="color: transparent; text-shadow: 0 0 0;"
 					onclick="myDislikeFunction();" /> <input class="count"
 					id="dislikecount" type="text" name="dislikecount" value=<%=dc%>>
+				
+				
+				<%} %>
 				<input type="hidden" name="trackname" value=<%=name%>></input>
 		</div>
 		<div id="greyBar"></div>
@@ -120,25 +160,39 @@
 		</form>
 		<br>
 		<form action="report.jsp">
-		<input type="hidden" name="trk" id="trk" value=<%=name%>>
-			<input id="but" type="submit" value="Report" />
+			<input type="hidden" name="trk" id="trk" value=<%=name%>> <input
+				id="but" type="submit" value="Report" />
 		</form>
 		<%con.close(); 
 		}catch(Exception e){
 		}
 		%>
 
-	<br><br><br><br><br><br>
-	<script type="text/javascript" src="controls.js"></script>
-	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=899850216811528";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-share-button" data-href="https://localhost:8091/Amusing/sampletest/titlecard.html" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%3A8091%2FAmusing%2Fsampletest%2Ftitlecard.html&amp;src=sdkpreparse">Share</a></div>
-</center>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<script type="text/javascript" src="controls.js"></script>
+		<div id="fb-root"></div>
+		<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id))
+					return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=899850216811528";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		<div class="fb-share-button"
+			data-href="https://localhost:8091/Amusing/sampletest/titlecard.html"
+			data-layout="button" data-size="small" data-mobile-iframe="true">
+			<a class="fb-xfbml-parse-ignore" target="_blank"
+				href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%3A8091%2FAmusing%2Fsampletest%2Ftitlecard.html&amp;src=sdkpreparse">Share</a>
+		</div>
+	</center>
 </body>
 </html>
