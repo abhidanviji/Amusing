@@ -110,7 +110,7 @@
 				
 				<input type="text" id="dislikeButton" name="count"
 					style="color: transparent; text-shadow: 0 0 0; background-image: url(../images/dis.png);"
-					onclick="myDislikeFunction();" /> <input class="count"
+					/> <input class="count"
 					id="dislikecount" type="text" name="dislikecount" value=<%=dc%>>
 				
 				<%}else{ %>
